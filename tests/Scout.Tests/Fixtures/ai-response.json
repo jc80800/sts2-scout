@@ -1,0 +1,30 @@
+[
+  {
+    "id": "fixture-claim-positive",
+    "kind": "CardSynergy",
+    "subject": "fixture.guard",
+    "other": "fixture.spark",
+    "tag": null,
+    "weight": 2,
+    "gameVersion": "fixture-v1",
+    "sourceUrl": "file:///scout-fixtures/source.txt",
+    "evidenceType": "synthetic",
+    "confidence": 0.8,
+    "evidenceLocator": "line 1",
+    "reason": "Synthetic interaction"
+  },
+  {
+    "id": "fixture-claim-negative",
+    "kind": "CardSynergy",
+    "subject": "fixture.guard",
+    "other": "fixture.spark",
+    "tag": null,
+    "weight": -1,
+    "gameVersion": "fixture-v1",
+    "sourceUrl": "file:///scout-fixtures/source.txt",
+    "evidenceType": "synthetic",
+    "confidence": 0.6,
+    "evidenceLocator": "line 1",
+    "reason": "Synthetic disagreement"
+  }
+]

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "version": "synthetic-1",
+  "gameVersion": "fixture-v1",
+  "aspectRatio": 1.7777777777777777,
+  "threshold": 0.96,
+  "margin": 0.04,
+  "probes": [
+    {
+      "kind": "screen",
+      "screen": "CardReward",
+      "slot": 0,
+      "region": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 0.3333333333333333
+      },
+      "templates": [
+        {
+          "label": "reward",
+          "width": 32,
+          "height": 16,
+          "pixels": "KCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3Nzc3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKCgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3Nzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKCgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3Nzc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCg="
+        }
+      ]
+    },
+    {
+      "kind": "screen",
+      "screen": "Merchant",
+      "slot": 0,
+      "region": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 0.3333333333333333
+      },
+      "templates": [
+        {
+          "label": "merchant",
+          "width": 32,
+          "height": 16,
+          "pixels": "3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgoKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3Nzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKCgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3Nzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCgoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3NwoKCjc3CgoKNzc3Cgo3NzcKCgo3NwoKCjc3NwoKNzc3CgoKNzcKCgo3NzcKCjc3Nw="
+        }
+      ]
+    },
+    {
+      "kind": "entity",
+      "screen": "CardReward",
+      "slot": 0,
+      "region": {
+        "x": 0,
+        "y": 0.3333333333333333,
+        "width": 0.5,
+        "height": 0.3333333333333333
+      },
+      "templates": [
+        {
+          "label": "fixture.guard",
+          "width": 32,
+          "height": 16,
+          "pixels": "IyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uY="
+        }
+      ]
+    },
+    {
+      "kind": "entity",
+      "screen": "CardReward",
+      "slot": 1,
+      "region": {
+        "x": 0.5,
+        "y": 0.3333333333333333,
+        "width": 0.5,
+        "height": 0.3333333333333333
+      },
+      "templates": [
+        {
+          "label": "fixture.spark",
+          "width": 32,
+          "height": 16,
+          "pixels": "FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBTIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMg="
+        }
+      ]
+    },
+    {
+      "kind": "entity",
+      "screen": "Merchant",
+      "slot": 0,
+      "region": {
+        "x": 0,
+        "y": 0.3333333333333333,
+        "width": 0.5,
+        "height": 0.3333333333333333
+      },
+      "templates": [
+        {
+          "label": "fixture.charm",
+          "width": 32,
+          "height": 16,
+          "pixels": "IyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uYjIyMj5ubm5iMjIyPm5ubmIyMjI+bm5uY="
+        }
+      ]
+    },
+    {
+      "kind": "price",
+      "screen": "Merchant",
+      "slot": 0,
+      "region": {
+        "x": 0.5,
+        "y": 0.3333333333333333,
+        "width": 0.5,
+        "height": 0.3333333333333333
+      },
+      "templates": [
+        {
+          "label": "75",
+          "width": 32,
+          "height": 16,
+          "pixels": "FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBTIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMg="
+        }
+      ]
+    }
+  ]
+}

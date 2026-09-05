@@ -1,0 +1,15 @@
+{
+  "sources": [
+    {
+      "url": "file:///scout-fixtures/source.txt",
+      "savedPath": "source.txt",
+      "retrievedAt": "2026-01-01T00:00:00Z",
+      "publishedAt": null,
+      "gameVersion": "fixture-v1",
+      "license": "AGPL-3.0; original repository fixture",
+      "termsCheckedAt": "2026-01-01T00:00:00Z",
+      "allowIngestion": true,
+      "allowRawRetention": true
+    }
+  ]
+}

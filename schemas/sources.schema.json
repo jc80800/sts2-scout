@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sources",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "savedPath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "retrievedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "gameVersion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1
+          },
+          "termsCheckedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "allowIngestion": {
+            "type": "boolean"
+          },
+          "allowRawRetention": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "url",
+          "savedPath",
+          "retrievedAt",
+          "publishedAt",
+          "gameVersion",
+          "license",
+          "termsCheckedAt",
+          "allowIngestion",
+          "allowRawRetention"
+        ]
+      }
+    }
+  },
+  "required": [
+    "sources"
+  ]
+}

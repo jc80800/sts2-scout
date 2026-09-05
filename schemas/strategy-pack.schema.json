@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "strategy-pack",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "packVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gameVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "Card",
+              "Relic",
+              "Potion",
+              "Service"
+            ]
+          },
+          "baseline": {
+            "type": "number",
+            "minimum": -100,
+            "maximum": 100
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "setupRisk": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "baseline",
+          "tags"
+        ]
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "CardSynergy",
+              "RelicSynergy",
+              "AntiSynergy",
+              "Archetype",
+              "DeckNeed",
+              "MerchantPriority"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "other": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tag": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "weight": {
+            "type": "number",
+            "minimum": -20,
+            "maximum": 20
+          },
+          "gameVersion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "sourceUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "retrievedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "gameVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidenceType": {
+                "type": "string",
+                "enum": [
+                  "expert-opinion",
+                  "mechanic",
+                  "correlation",
+                  "synthetic"
+                ]
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "evidenceHash": {
+                "type": "string",
+                "pattern": "^[a-fA-F0-9]{64}$"
+              },
+              "license": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidenceLocator": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "sourceUrl",
+              "retrievedAt",
+              "publishedAt",
+              "gameVersion",
+              "evidenceType",
+              "confidence",
+              "evidenceHash",
+              "license",
+              "evidenceLocator"
+            ]
+          },
+          "reviewState": {
+            "type": "string",
+            "enum": [
+              "approved"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "subject",
+          "other",
+          "tag",
+          "weight",
+          "gameVersion",
+          "source",
+          "reviewState",
+          "reason"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "packVersion",
+    "gameVersion",
+    "entities",
+    "claims"
+  ]
+}

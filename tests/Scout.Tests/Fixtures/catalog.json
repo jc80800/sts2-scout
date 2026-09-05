@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "packVersion": "fixture-1",
+  "gameVersion": "fixture-v1",
+  "entities": [
+    {
+      "id": "fixture.guard",
+      "name": "Synthetic Guard",
+      "kind": "Card",
+      "baseline": 5,
+      "tags": [
+        "block"
+      ],
+      "setupRisk": 0
+    },
+    {
+      "id": "fixture.spark",
+      "name": "Synthetic Spark",
+      "kind": "Card",
+      "baseline": 4,
+      "tags": [
+        "damage"
+      ],
+      "setupRisk": 1
+    },
+    {
+      "id": "fixture.charm",
+      "name": "Synthetic Charm",
+      "kind": "Relic",
+      "baseline": 3,
+      "tags": [],
+      "setupRisk": 0
+    },
+    {
+      "id": "fixture.tonic",
+      "name": "Synthetic Tonic",
+      "kind": "Potion",
+      "baseline": 2,
+      "tags": [],
+      "setupRisk": 0
+    }
+  ],
+  "claims": []
+}
