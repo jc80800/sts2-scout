@@ -122,6 +122,7 @@ public sealed class RewardTests
         var recognizer = new RewardRecognizer(Json.Read<Calibration>(Fixture("ocr-calibration.json")), Pack, "ironclad", ocr);
         var replay = recognizer.Replay(GrayFrame.ReadPgm(Fixture(fixture)), DateTimeOffset.UnixEpoch);
         Assert.Equal(Screen.CardReward, replay.Observation.Screen);
+        Assert.True(replay.Slots.All(s => s.Match.EntityId != null && s.Match.Upgraded), Json.Write(replay.Slots));
         Assert.Equal(new[] { "sts2.pommel_strike", "sts2.vicious", "sts2.cinder" }, replay.Observation.Choices.Select(c => c.EntityId));
         Assert.All(replay.Observation.Choices, c => Assert.True(c.Upgraded));
         Assert.Equal(3, replay.Slots.Length); Assert.All(replay.Slots, s => Assert.NotEmpty(s.Readings));
@@ -167,6 +168,7 @@ public sealed class RewardTests
                 Array.Copy(frame.Pixels, y * frame.Width + starts[(slot + 1) % 3], pixels, y * frame.Width + starts[slot], 240);
         using var ocr = new TesseractOcr(Path.Combine(AppContext.BaseDirectory, "data", "ocr"));
         var result = new RewardRecognizer(profile, Pack, "ironclad", ocr).Replay(frame with { Pixels = pixels }, DateTimeOffset.UnixEpoch);
+        Assert.True(result.Slots.All(s => s.Match.EntityId != null && s.Match.Upgraded), Json.Write(result.Slots));
         Assert.Equal(new[] { "sts2.vicious", "sts2.cinder", "sts2.pommel_strike" }, result.Observation.Choices.Select(c => c.EntityId));
     }
     private sealed class ConflictingOcr : INameOcr { public OcrReading[] Read(GrayFrame crop) => [new("Cinder", 1, "a"), new("Vicious+", 1, "b")]; }

@@ -37,21 +37,22 @@ public sealed class TesseractOcr : INameOcr, IDisposable
             ObjectDisposedException.ThrowIf(handle == 0, this);
             var readings = new List<OcrReading>();
             // Different ribbon shades need different thresholds. Disagreement is rejected upstream.
-            foreach (var threshold in new[] { -3, -2, -1, 110, 130, 150, 165, 175 })
+            foreach (var (threshold, scale) in new[] { (-1, 1), (-1, 2), (-1, 4) }.Concat(new[] { 110, 130, 150, 165, 175 }.SelectMany(t => new[] { (t, 2), (t, 4) })))
             {
-                var prepared = Prepare(crop, threshold);
+                var prepared = Prepare(crop, threshold, scale);
                 TessBaseAPISetImage(handle, prepared.Pixels, prepared.Width, prepared.Height, 1, prepared.Width);
                 var pointer = TessBaseAPIGetUTF8Text(handle);
-                try { readings.Add(new(Marshal.PtrToStringUTF8(pointer)?.Trim() ?? "", TessBaseAPIMeanTextConf(handle) / 100d, threshold < 0 ? $"grayscale-{(threshold == -3 ? 1 : threshold == -2 ? 2 : 4)}x" : $"isolated-light-ink-{threshold}-4x")); }
+                try { readings.Add(new(Marshal.PtrToStringUTF8(pointer)?.Trim() ?? "", TessBaseAPIMeanTextConf(handle) / 100d, threshold < 0 ? $"grayscale-{scale}x" : $"isolated-light-ink-{threshold}-{scale}x")); }
                 finally { if (pointer != 0) TessDeleteText(pointer); TessBaseAPIClear(handle); }
             }
             return readings.ToArray();
         }
     }
-    public static GrayFrame Prepare(GrayFrame crop, int threshold)
+    public static GrayFrame Prepare(GrayFrame crop, int threshold, int scale = 4)
     {
         crop.Validate();
-        var scale = threshold == -3 ? 1 : threshold == -2 ? 2 : 4; const int border = 16;
+        if (scale is < 1 or > 4) throw new ArgumentOutOfRangeException(nameof(scale));
+        const int border = 16;
         var w = crop.Width * scale + border * 2; var h = crop.Height * scale + border * 2;
         var pixels = Enumerable.Repeat((byte)255, w * h).ToArray();
         var ink = crop.Pixels.Select(v => v > threshold).ToArray();
