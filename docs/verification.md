@@ -1,4 +1,45 @@
-# Verification record and Windows smoke checklist
+# Reward milestone verification (2026-09-06)
+
+Implemented on macOS arm64 with .NET SDK 10.0.400 / runtime 10.0.11. Windows WPF is cross-compiled; **no live Windows/game validation was performed here**. Windows Actions executes the actual shipped native OCR libraries and uploads the package; inspect the run for the exact branch commit.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Full Release build | `dotnet build Sts2Scout.sln -c Release --no-restore -m:1 -nodeReuse:false -p:UseSharedCompilation=false` | Passed, all projects, no warnings/errors |
+| Regression suite | `dotnet test tests/Scout.Tests/Scout.Tests.csproj -c Release --no-build --no-restore` | 47 passed, no skips on this Mac |
+| Format | `dotnet format Sts2Scout.sln --verify-no-changes --no-restore` | Passed |
+| JSON Schema | `python scripts/validate_data.py` | Passed with jsonschema 4.25.1 |
+| Semantic catalog validation | `dotnet run --project tools/Scout.Seeder -- validate data/strategy-pack.json` | Passed, 577 cards |
+| Runtime boundaries / OCR integrity | `python scripts/check_boundaries.py`; `python scripts/check_ocr_model.py` | Passed |
+| Legacy seeder CLI | `python scripts/smoke_seeder.py` | Passed; review/allowlist/overwrite gates preserved |
+| Vulnerabilities | `dotnet list Sts2Scout.sln package --vulnerable --include-transitive` | No vulnerable packages reported for all five projects by configured NuGet source |
+| Windows x64 publish | `dotnet publish src/Scout.Windows/Scout.Windows.csproj -c Release -r win-x64 --self-contained true -o artifacts/Sts2Scout-win-x64` | Passed; includes model and x64 native OCR libraries |
+| Package / artifact boundary | `python scripts/stage_artifact.py artifacts/Sts2Scout-win-x64`; `python scripts/check_boundaries.py artifacts/Sts2Scout-win-x64` | Passed; ZIP approximately 79 MiB; no seeder/test binaries |
+
+Local command paths were `/private/tmp/sts2-dotnet/dotnet`, `NUGET_PACKAGES=/private/tmp/sts2-nuget`; Python schema validation used an isolated temporary virtualenv. .NET formatting and VSTest needed authorized local named pipes. A transient approval-service usage limit briefly blocked installing the schema checker; retry after the user continued succeeded. These are development tools, not runtime networking.
+
+## Saved real frames (private, not committed)
+
+The supplied 1920×1080 P2 frames were replayed locally using a screen probe sampled from the first frame and one shared set of three name regions. The screen matching algorithm was unchanged. OCR used local Tesseract 5.5.3 with the bundled `tessdata_best` English model; Windows ships the NuGet native build (5.2.0), exercised separately by Windows CI.
+
+| Diagnostic suffix | Screen | OCR result | Recommendation with constructed deck |
+| --- | --- | --- | --- |
+| 052224384 | CardReward | Pommel Strike+, Vicious+, Cinder+ | Vicious+ |
+| 052231227 | CardReward | Pommel Strike+, Vicious+, Cinder+ | Vicious+ |
+| 052315604 | CardReward | Bully+, Vicious+, Breakthrough+ | Vicious+ |
+| 052458071 | Unknown | Merchant image excluded from reward OCR | None |
+| 052500405 | Unknown | Merchant image excluded from reward OCR | None |
+
+All nine offered names/upgrades were correct in these three reward files. **The first two files have identical pixel hashes; the two merchant files also share a hash.** This is only two distinct rewards and one distinct negative, not a population accuracy estimate. The supplied imagery contains co-op UI indicators; it was used only as an offline font/layout fixture. This does not validate multiplayer support, and Scout remains single-player only.
+
+The evaluation deck was explicitly constructed: three base Bash, two upgraded Pommel Strike, five base Ironclad Defend. It was not read from game state. Reasons identify the three Vulnerable sources and existing Pommel Strike copies. Native synthetic tests cover plain/outlined text and swapping names between slots, plus safe unknowns and ambiguity. No proprietary capture or derived screen-title template is committed.
+
+## Remaining validation on a player's Windows machine
+
+Follow [the exact first-recommendation steps](card-reward-mvp.md). Verify foreground capture, click-through/hotkey, deck editing, duplicate/upgrade correction, native prerequisite availability, all three displayed names, upgrade indicators, and automatic/manual recommendations in a real single-player run. Verify different names, long names, hovers, transitions, UI scales and display modes. Unknowns should remain unknown, and correction must never select a game card. Native automated tests and successful publishing cannot establish this live behavior.
+
+---
+
+# Prior baseline verification record and Windows smoke checklist
 
 ## Verified on this development machine
 

@@ -1,14 +1,15 @@
 # sts2-scout
 
-Windows-only, external single-player companion for Slay the Spire 2. Scout captures the foreground game client, recognizes calibrated reward/merchant patterns, ranks recognized choices with offline heuristics, and stores local observations and unconfirmed merchant decisions in SQLite.
+Windows-only, external single-player companion for Slay the Spire 2. Scout captures the foreground game, detects calibrated CardReward screens, reads three card names with local OCR, and ranks offers against a deck maintained in its editor. It never selects a card or opens game files.
 
-**Initial implementation / calibration required.** No real STS2 screenshots or licensed catalog were supplied. The bundled strategy pack is intentionally empty. The app starts and captures without them, but useful game recognition and recommendations require a local calibrated profile and a reviewed, patch-matched catalog/strategy pack. Synthetic fixture results are not evidence of real-game accuracy. This is not a ready-to-use strategy database.
+The bundled **577-card v0.107.1 catalog** includes factual provenance and explicit uncertainty. Recommendations are deterministic feature heuristics, not win probabilities. English OCR requires three calibrated name regions and can withhold uncertain readings; the overlay provides correction. The existing screen detector and three-frame stability filter remain. Merchant support retains its legacy behavior and is outside this milestone.
 
-- [Exact Windows install, build and daily-use guide](docs/windows-guide.md)
-- [Diagnostic capture and calibration](docs/calibration.md)
-- [Development-only strategy seeding and review](docs/seeding.md)
-- [Architecture, extension points and boundaries](docs/architecture.md)
-- [Verification and remaining Windows smoke tests](docs/verification.md)
+- [First Windows recommendation, deck editor, replay and limitations](docs/card-reward-mvp.md)
+- [Catalog research, sources and refresh](docs/catalog-research.md)
+- [Windows installation and capture setup](docs/windows-guide.md)
+- [Calibration](docs/calibration.md)
+- [Verification record](docs/verification.md)
+- [Architecture](docs/architecture.md)
 
 ## Quick source build (Windows x64)
 
@@ -29,4 +30,4 @@ dotnet publish src/Scout.Windows/Scout.Windows.csproj -c Release -r win-x64 --se
 
 The shipped application makes no network requests, requires no API key or model, and contains no seeding executable. It neither reads game memory nor modifies game files, installs mods, hooks rendering, or sends game input. All application writes go under `%LOCALAPPDATA%\Sts2Scout`. Screenshots are not saved unless diagnostics are enabled and the save button is pressed. Build-time NuGet downloads are separate from runtime behavior.
 
-Source is under the existing [GNU AGPL v3 license](LICENSE), with no warranty. Original synthetic fixtures are included under the same license. No third-party game text, art, or datasets are bundled. See [third-party notices](docs/third-party-notices.md) for software dependencies.
+Source is under the existing [GNU AGPL v3 license](LICENSE), with no warranty. Original synthetic fixtures are included under the same license. Normalized factual card data and the Apache-licensed English OCR model are bundled; no game artwork or captures are included. See [third-party notices](docs/third-party-notices.md) for software dependencies.

@@ -53,6 +53,139 @@
             "type": "number",
             "minimum": 0,
             "maximum": 10
+          },
+          "card": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "color": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "rarity": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "cost": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mechanics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "upgradeChanges": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "upgradedTags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "uncertainty": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "source": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "sourceUrl": {
+                        "type": "string",
+                        "format": "uri"
+                      },
+                      "retrievedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "publishedAt": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "gameVersion": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "evidenceType": {
+                        "type": "string",
+                        "enum": [
+                          "expert-opinion",
+                          "mechanic",
+                          "correlation",
+                          "synthetic"
+                        ]
+                      },
+                      "confidence": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "evidenceHash": {
+                        "type": "string",
+                        "pattern": "^[a-fA-F0-9]{64}$"
+                      },
+                      "license": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "evidenceLocator": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "sourceUrl",
+                      "retrievedAt",
+                      "publishedAt",
+                      "gameVersion",
+                      "evidenceType",
+                      "confidence",
+                      "evidenceHash",
+                      "license",
+                      "evidenceLocator"
+                    ]
+                  },
+                  "multiplayerOnly": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "color",
+                  "type",
+                  "rarity",
+                  "cost",
+                  "mechanics",
+                  "upgradeChanges",
+                  "upgradedTags",
+                  "uncertainty",
+                  "source"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -208,6 +341,46 @@
           "reason"
         ]
       }
+    },
+    "catalog": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "retrievedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "expectedCards": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sourceHash": {
+              "type": "string",
+              "pattern": "^[a-fA-F0-9]{64}$"
+            },
+            "strategyMethod": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "version",
+            "retrievedAt",
+            "expectedCards",
+            "sourceHash",
+            "strategyMethod"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "required": [

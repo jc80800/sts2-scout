@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "version": "synthetic-ocr-1",
+  "gameVersion": "0.107.1",
+  "aspectRatio": 1.7777777777777777,
+  "threshold": 0.96,
+  "margin": 0.04,
+  "probes": [
+    {
+      "kind": "screen",
+      "screen": "CardReward",
+      "slot": 0,
+      "region": {
+        "x": 0.10416666666666667,
+        "y": 0.09259259259259259,
+        "width": 0.7916666666666666,
+        "height": 0.037037037037037035
+      },
+      "templates": [
+        {
+          "label": "reward",
+          "width": 32,
+          "height": 16,
+          "pixels": "Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e5ubm5ubm5uYeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7m5ubm5ubm5h4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHubm5ubm5ubmHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e5ubm5ubm5uYeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7m5ubm5ubm5h4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHubm5ubm5ubmHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e5ubm5ubm5uYeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7m5ubm5ubm5h4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHubm5ubm5ubmHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e5ubm5ubm5uYeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7m5ubm5ubm5h4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHubm5ubm5ubmHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e5ubm5ubm5uYeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7m5ubm5ubm5h4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHubm5ubm5ubmHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e5ubm5ubm5uY="
+        }
+      ]
+    }
+  ],
+  "rewardNameRegions": [
+    {
+      "x": 0.07291666666666667,
+      "y": 0.37037037037037035,
+      "width": 0.25,
+      "height": 0.08333333333333333
+    },
+    {
+      "x": 0.375,
+      "y": 0.37037037037037035,
+      "width": 0.25,
+      "height": 0.08333333333333333
+    },
+    {
+      "x": 0.6770833333333334,
+      "y": 0.37037037037037035,
+      "width": 0.25,
+      "height": 0.08333333333333333
+    }
+  ]
+}

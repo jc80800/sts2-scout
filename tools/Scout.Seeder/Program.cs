@@ -6,6 +6,48 @@ try
 {
     switch (args.FirstOrDefault())
     {
+        case "fetch" when args.Length == 4:
+            {
+                var paths = new ScoutPaths(args[2]);
+                try
+                {
+                    using var client = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }) { Timeout = TimeSpan.FromSeconds(30) };
+                    var pack = await PackUpdater.Download(client, new Uri(args[1]), args[3]);
+                    PackCache.Install(paths, pack, args[3]); Console.WriteLine("Installed " + pack.PackVersion);
+                }
+                catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException or IOException or System.Text.Json.JsonException)
+                {
+                    Console.Error.WriteLine("Update failed; existing cache unchanged: " + ex.Message); return 1;
+                }
+                break;
+            }
+        case "reward-regions" when args.Length is 2 or 14:
+            {
+                var profile = Json.Read<Calibration>(args[1]);
+                if (args.Length == 2 && Math.Abs(profile.AspectRatio / (16d / 9) - 1) > .015) throw new InvalidDataException("Default name regions require 16:9; provide measured regions for this aspect ratio");
+                var regions = args.Length == 2 ? new[] { 531d, 881d, 1231d }.Select(x => new Region(x / 1920, 460d / 1080, 171d / 1920, 28d / 1080)).ToArray() :
+                    Enumerable.Range(0, 3).Select(slot => new Region(double.Parse(args[2 + slot * 4], CultureInfo.InvariantCulture), double.Parse(args[3 + slot * 4], CultureInfo.InvariantCulture), double.Parse(args[4 + slot * 4], CultureInfo.InvariantCulture), double.Parse(args[5 + slot * 4], CultureInfo.InvariantCulture))).ToArray();
+                if (regions.Any(r => !r.Valid) || regions.Distinct().Count() != 3) throw new InvalidDataException("Invalid name regions");
+                File.WriteAllText(args[1], Json.Write(profile with { RewardNameRegions = regions, Version = profile.Version + "/ocr-1" }));
+                Console.WriteLine("Configured three name regions; preserved screen/merchant calibration"); break;
+            }
+        case "validate" when args.Length == 2:
+            PackValidation.Validate(Json.Read<StrategyPack>(args[1])); Console.WriteLine("Valid catalog/strategy pack"); break;
+        case "install" when args.Length == 4:
+            PackCache.Install(new ScoutPaths(args[2]), Json.Read<StrategyPack>(args[1]), args[3]); Console.WriteLine("Installed validated pack; previous valid version retained"); break;
+        case "recognize" when args.Length >= 4:
+            {
+                var pack = Json.Read<StrategyPack>(args[1]); PackValidation.Validate(pack);
+                var calibration = Json.Read<Calibration>(args[2]);
+                var contextIndex = Array.IndexOf(args, "--context");
+                var context = contextIndex >= 0 ? Json.Read<RunContext>(args[contextIndex + 1]) : new RunContext(pack.GameVersion, [], [], [], [], Character: "ironclad");
+                using var ocr = new TesseractOcr(Path.Combine(AppContext.BaseDirectory, "data", "ocr"));
+                var replay = new RewardRecognizer(calibration, pack, context.Character, ocr).Replay(GrayFrame.ReadPgm(args[3]), DateTimeOffset.UnixEpoch);
+                var ranked = new RecommendationEngine(pack).Rank(replay.Observation, context);
+                var output = new { replay.Width, replay.Height, replay.FrameHash, replay.Observation, replay.Slots, context.Character, pack.PackVersion, CatalogVersion = pack.Catalog?.Version, CachedAt = pack.Catalog?.RetrievedAt, BlockReason = DeckRanking.BlockReason(pack, replay.Observation, context), Recommendations = ranked };
+                if (!args.Contains("--json")) Console.WriteLine("Offline replay (fixed timestamp for deterministic evaluation; confidence values are scores):");
+                Console.WriteLine(Json.Write(output)); break;
+            }
         case "prepare" when args.Length == 4:
             {
                 var manifest = Json.Read<SourceManifest>(args[1]);
@@ -47,7 +89,7 @@ try
                 File.WriteAllText(path, Json.Write(profile with { Version = "local-" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(), Probes = probes.ToArray() })); break;
             }
         default:
-            Console.Error.WriteLine("Scout.Seeder (development only)\nprepare <sources.json> <allowlisted-url> <prompt.txt>\ningest <catalog.json> <sources.json> <ai-response.json> <output-dir>\ncompile <catalog.json> <output-dir> <review.json> <new-version> <pack-output.json>\ncalibrate <profile.json> <frame.pgm> <screen|entity|price|upgrade|selection> <CardReward|Merchant> <slot> <label> <x> <y> <width> <height> <game-version>");
+            Console.Error.WriteLine("Scout.Seeder (development only)\nfetch <trusted-manifest-url> <local-app-data-directory> <game-version>\nreward-regions <calibration> [x0 y0 w0 h0 x1 y1 w1 h1 x2 y2 w2 h2]\nrecognize <pack> <calibration> <frame.pgm> [--context run.json] [--json]\nvalidate <pack>\ninstall <pack> <local-app-data-directory> <game-version>\nprepare <sources.json> <allowlisted-url> <prompt.txt>\ningest <catalog.json> <sources.json> <ai-response.json> <output-dir>\ncompile <catalog.json> <output-dir> <review.json> <new-version> <pack-output.json>\ncalibrate <profile.json> <frame.pgm> <screen|entity|price|upgrade|selection> <CardReward|Merchant> <slot> <label> <x> <y> <width> <height> <game-version>");
             return 2;
     }
     return 0;

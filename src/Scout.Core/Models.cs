@@ -12,13 +12,13 @@ public static class Json
 public enum Screen { Unknown, CardReward, Merchant }
 public enum EntityKind { Card, Relic, Potion, Service }
 public enum ClaimKind { CardSynergy, RelicSynergy, AntiSynergy, Archetype, DeckNeed, MerchantPriority }
-public sealed record Entity(string Id, string Name, EntityKind Kind, double Baseline, string[] Tags, double SetupRisk = 0);
+public sealed record Entity(string Id, string Name, EntityKind Kind, double Baseline, string[] Tags, double SetupRisk = 0, CardDetails? Card = null);
 public sealed record Provenance(string SourceUrl, DateTimeOffset RetrievedAt, DateTimeOffset? PublishedAt, string GameVersion, string EvidenceType, double Confidence, string EvidenceHash, string License, string EvidenceLocator);
 public sealed record Claim(string Id, ClaimKind Kind, string Subject, string? Other, string? Tag, double Weight, string GameVersion, Provenance Source, string ReviewState, string Reason);
-public sealed record StrategyPack(int SchemaVersion, string PackVersion, string GameVersion, Entity[] Entities, Claim[] Claims);
+public sealed record StrategyPack(int SchemaVersion, string PackVersion, string GameVersion, Entity[] Entities, Claim[] Claims, CatalogInfo? Catalog = null);
 public sealed record Choice(int Slot, string? EntityId, double Confidence, int? Price = null, double PriceConfidence = 0, bool Upgraded = false);
 public sealed record Observation(DateTimeOffset At, Screen Screen, double Confidence, Choice[] Choices, string ProfileVersion, string FrameHash, Selection[]? SelectionSignals = null);
-public sealed record RunContext(string GameVersion, string[] Deck, string[] Relics, string[] Needs, string[] Archetypes, int Act = 1, int Ascension = 0, int Gold = 0, int ReserveGold = 0);
+public sealed record RunContext(string GameVersion, string[] Deck, string[] Relics, string[] Needs, string[] Archetypes, int Act = 1, int Ascension = 0, int Gold = 0, int ReserveGold = 0, string Character = "unconfigured", DeckEntry[]? Cards = null);
 public sealed record Recommendation(int Slot, string EntityId, double Score, string[] Reasons);
 public sealed record Selection(int Slot, string EntityId, double Confidence, string Evidence, bool Confirmed = false);
 
@@ -33,6 +33,7 @@ public static class PackValidation
         if (pack.Claims.Select(x => x.Id).Distinct(StringComparer.Ordinal).Count() != pack.Claims.Length) throw new InvalidDataException("Duplicate claim IDs");
         foreach (var e in pack.Entities)
             if (string.IsNullOrWhiteSpace(e.Id) || string.IsNullOrWhiteSpace(e.Name) || !double.IsFinite(e.Baseline) || Math.Abs(e.Baseline) > 100 || !double.IsFinite(e.SetupRisk) || e.SetupRisk is < 0 or > 10 || !Enum.IsDefined(e.Kind)) throw new InvalidDataException("Invalid entity");
+        CatalogValidation.Validate(pack);
         foreach (var c in pack.Claims)
         {
             var error = ClaimError(c, pack);

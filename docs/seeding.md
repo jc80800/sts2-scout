@@ -1,5 +1,7 @@
 # Development-only AI-assisted seeding
 
+The current bundled catalog and repeatable API refresh are documented in [catalog research](catalog-research.md). This original workflow remains for additional hash-bound, manually reviewed strategy claims.
+
 `tools/Scout.Seeder` is not referenced by or packaged with the desktop application. It accepts **saved** webpages/API responses and user-authored files through `SourceManifest`; no URL is fetched automatically. APIs/URLs are exact provenance allowlist entries, each mapped to a saved file. No source is preapproved, including Spire Codex. A human must check current access conditions, license, retention and redistribution rights before downloading/ingesting external material. Merely being public does not confer redistribution rights.
 
 ## Workflow

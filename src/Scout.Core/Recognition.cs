@@ -23,7 +23,7 @@ public sealed record Region(double X, double Y, double Width, double Height)
 }
 public sealed record VisualTemplate(string Label, int Width, int Height, byte[] Pixels);
 public sealed record Probe(string Kind, Screen Screen, int Slot, Region Region, VisualTemplate[] Templates);
-public sealed record Calibration(int SchemaVersion, string Version, string GameVersion, double AspectRatio, double Threshold, double Margin, Probe[] Probes);
+public sealed record Calibration(int SchemaVersion, string Version, string GameVersion, double AspectRatio, double Threshold, double Margin, Probe[] Probes, Region[]? RewardNameRegions = null);
 public interface IScreenRecognizer { Observation Recognize(GrayFrame frame, DateTimeOffset at); }
 public sealed class TemplateRecognizer : IScreenRecognizer
 {

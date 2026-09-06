@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "gameVersion", "packVersion", "url", "sha256"],
+  "properties": {
+    "schemaVersion": {"const": 1}, "gameVersion": {"type": "string", "minLength": 1},
+    "packVersion": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri"},
+    "sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"}
+  }
+}

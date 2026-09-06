@@ -19,6 +19,12 @@ public sealed class ScoutPaths
         return path;
     }
     public void Write(string name, string contents) => File.WriteAllText(FilePath(name), contents);
+    public void AtomicWrite(string name, string contents)
+    {
+        var temporary = name + ".pending";
+        File.WriteAllText(FilePath(temporary), contents);
+        File.Move(FilePath(temporary), FilePath(name), true);
+    }
     public void Log(string message)
     {
         var path = FilePath("scout.log");

@@ -6,6 +6,7 @@ public sealed class RecommendationEngine(StrategyPack pack)
     {
         PackValidation.Validate(pack);
         if (context.GameVersion != pack.GameVersion || observation.Screen == Screen.Unknown || observation.Confidence < .9) return [];
+        if (observation.Screen == Screen.CardReward && pack.Catalog != null) return DeckRanking.Rank(pack, observation, context);
         var results = new List<Recommendation>();
         foreach (var choice in observation.Choices.Where(c => c.EntityId != null && c.Confidence >= .9))
         {

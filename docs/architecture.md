@@ -1,5 +1,7 @@
 # Architecture and decisions
 
+The reward milestone adds `RewardRecognizer`/`INameOcr`, native local `TesseractOcr`, explicit `DeckEntry` migration, `DeckRanking`, and validated `PackCache`. WPF has deck and reward-correction dialogs. `Scout.Seeder` owns replay, research validation/install and the optional HTTP update client. Runtime networking remains forbidden. See [the current flow](card-reward-mvp.md) and [catalog refresh](catalog-research.md); template entity recognition below now applies to the legacy path and merchants.
+
 - `Scout.Core` (.NET 10): immutable data contracts, strict JSON, validated packs, normalized grayscale template pipeline, stability filter, decision hypotheses, deterministic heuristic engine, and Scout-owned write paths. No Windows or HTTP dependency.
 - `Scout.Storage`: Microsoft.Data.Sqlite, embedded transactional migration 001, parameterized writes and per-process session IDs. Foreign keys connect observations, choices and hypotheses. Provenance stores exact pack JSON; collisions under the same version are rejected. The schema deliberately forbids confirmed inferred selections.
 - `Scout.Windows`: WPF borderless topmost window with an opaque outer background; Win32 process/window metadata and foreground client capture; global hotkey toggles WS_EX_TRANSPARENT/WS_EX_NOACTIVATE. Background capture avoids blocking the WPF dispatcher. A single in-flight poll bounds resource usage. Device coordinates are converted to WPF DIPs for position.

@@ -1,5 +1,7 @@
 # Windows user guide
 
+For CardReward OCR, deck entry, correction, and the first real recommendation, follow [the current MVP guide](card-reward-mvp.md). The capture/install details below still apply; manual deck settings and per-card template steps are legacy alternatives.
+
 ## Requirements
 
 Windows 11 x64 is the supported target. Windows 10 2004+ has the capture exclusion API, but Windows 10 is not the tested/support target. Use a normal desktop session with DWM, single-player STS2, and windowed or borderless mode. Exclusive fullscreen, remote desktop, HDR, color filters, overlapping third-party windows, and elevated game processes may prevent usable capture. Scout runs as your normal user, without administrator rights.
@@ -28,7 +30,7 @@ The publish output is `artifacts\Sts2Scout-win-x64\Sts2Scout.exe`. A plain `dotn
 2. Scout displays a waiting panel until it finds a visible process whose executable basename matches `processName` (default `SlayTheSpire2`). Verify the actual basename in Task Manager → Details if detection fails; omit `.exe` in settings. This name is configurable because it has not been verified on this development Mac.
 3. Focus the game. Scout captures only while the game is foreground, at most once per configured polling interval. Minimized/unfocused games pause. The overlay follows the client origin, retaining its configured offsets.
 4. The default **Ctrl+Shift+S** toggles mouse interaction with Scout. Click-through mode passes mouse interaction to the game; interactive mode lets you press Scout buttons. It does not automate game input. Press the hotkey again or click **Return to click-through** to resume.
-5. The initial panel says **Calibration required**. Follow [calibration](calibration.md) and [seeding](seeding.md). An empty pack produces no recommendations. A configured version mismatch also suppresses recommendations.
+5. The initial panel says **Calibration required**. Follow [calibration](calibration.md) and [seeding](seeding.md). The bundled patch-specific catalog supplies card facts; OCR name regions and an entered deck are required. A configured version mismatch also suppresses recommendations.
 6. Once calibrated, visit a reward or merchant screen. Three consecutive recognized observations with matching choices are required before recording/ranking. Unknown entities/prices are never guessed. Merchant rankings require known prices and enough manually configured gold.
 7. Heuristic scores are not win probabilities. Skipping a reward or saving gold remains an option. Merchant disappearance generates only an unconfirmed hypothesis; exiting a reward screen alone does not identify which card was picked.
 8. Use the hotkey and **Quit Scout** to close. Alt+F4 also closes the focused Scout window. Only one instance runs per Windows session.
@@ -58,7 +60,7 @@ After the first start, close Scout and edit `%LOCALAPPDATA%\Sts2Scout\settings.j
 
 `offsetX`/`offsetY` are WPF device-independent pixels relative to the game client; `opacity` ranges from 0.2 to 1. `clickThrough: false` starts interactive. The modifier bitmask uses Alt=1, Ctrl=2, Shift=4, Win=8; add values. Key values are Win32 virtual-key codes expressed in decimal (83=S). Scout registers a global hotkey with no-repeat. If registration fails because another app owns it, Scout starts interactive and displays an error; change the keys and restart.
 
-Deck and relic arrays contain reviewed catalog IDs; duplicate deck IDs represent copies. Needs/archetypes are explicit tags matching the pack. Set the exact patch string in pack, calibration and context. **No automatic deck, act, ascension or gold tracking is implemented**: update this context between decisions/runs as needed. Stale context leads to stale recommendations. Price recognition supports calibrated whole-price templates; uncalibrated prices remain unknown.
+Deck and relic arrays contain reviewed catalog IDs; duplicate deck IDs represent copies. Needs/archetypes are explicit tags matching the pack. Set the exact patch string in pack, calibration and context. **No automatic deck, act, ascension or gold tracking is implemented**. Use the in-app deck editor for deck, character, act and ascension; manual JSON editing is not required for a reward recommendation. Stale context leads to stale recommendations. Price recognition supports calibrated whole-price templates; uncalibrated prices remain unknown.
 
 ## Diagnostics and local files
 

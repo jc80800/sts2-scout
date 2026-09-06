@@ -22,6 +22,10 @@ jobs:
       - run: dotnet build Sts2Scout.sln -c Release --no-restore
       - run: dotnet format Sts2Scout.sln --verify-no-changes --no-restore
       - run: dotnet test tests/Scout.Tests/Scout.Tests.csproj -c Release --no-build --results-directory tests/Scout.Tests/TestResults --logger "trx;LogFileName=tests.trx" --logger "console;verbosity=normal"
+      - run: python -m pip install jsonschema==4.25.1
+      - run: python scripts/validate_data.py
+      - run: python scripts/check_ocr_model.py
+      - run: dotnet list Sts2Scout.sln package --vulnerable --include-transitive
       - run: python scripts/smoke_seeder.py
       - run: python scripts/check_boundaries.py
       - run: ./scripts/package.ps1

@@ -12,10 +12,16 @@ namespace Scout.Windows;
 public sealed class OverlayWindow : Window
 {
     private readonly ScoutPaths paths;
-    private readonly Settings settings;
+    private Settings settings;
     private readonly StrategyPack pack;
     private readonly ScoutDatabase database;
-    private readonly TemplateRecognizer? recognizer;
+    private IScreenRecognizer? recognizer;
+    private TesseractOcr? ocr;
+    private Calibration? profile;
+    private Observation? currentReward;
+    private RewardReplay? replay;
+    private bool corrected, dialogOpen;
+    private string dataStatus = "";
     private readonly RecommendationEngine engine;
     private readonly StabilityFilter stability = new();
     private readonly DecisionTracker decisions = new();
@@ -35,10 +41,11 @@ public sealed class OverlayWindow : Window
         var settingsFile = paths.FilePath("settings.json");
         settings = File.Exists(settingsFile) ? Json.Read<Settings>(settingsFile) : new Settings(); settings.Validate();
         if (!File.Exists(settingsFile)) paths.Write("settings.json", Json.Write(settings));
-        var localPack = paths.FilePath("strategy-pack.json");
-        pack = Json.Read<StrategyPack>(File.Exists(localPack) ? localPack : Path.Combine(AppContext.BaseDirectory, "data", "strategy-pack.json")); PackValidation.Validate(pack);
+        var loaded = PackCache.Load(paths, Path.Combine(AppContext.BaseDirectory, "data", "strategy-pack.json"), settings.Context.GameVersion);
+        pack = loaded.Pack; dataStatus = loaded.Status;
+        settings = settings with { Context = Deck.Migrate(settings.Context) };
         var calibration = paths.FilePath("calibration.json");
-        if (File.Exists(calibration)) recognizer = new(Json.Read<Calibration>(calibration), pack);
+        if (File.Exists(calibration)) { profile = Json.Read<Calibration>(calibration); ConfigureRecognizer(); }
         engine = new(pack); database = new(paths);
         Width = 370; SizeToContent = SizeToContent.Height; MaxHeight = 720; Left = settings.OffsetX; Top = settings.OffsetY;
         // Display affinity is unreliable for the layered HWND created by AllowsTransparency.
@@ -46,17 +53,92 @@ public sealed class OverlayWindow : Window
         Title = "Sts2Scout"; AllowsTransparency = false; Background = new SolidColorBrush(Color.FromRgb(17, 24, 39)); WindowStyle = WindowStyle.None; ResizeMode = ResizeMode.NoResize; Topmost = true; ShowActivated = false; Opacity = settings.Opacity;
         var panel = new StackPanel { Margin = new Thickness(18) };
         panel.Children.Add(new TextBlock { Text = "SCOUT  /  STS2", FontSize = 21, FontWeight = FontWeights.Bold, Foreground = Brushes.Turquoise });
-        panel.Children.Add(status); panel.Children.Add(captureWarning); panel.Children.Add(results); panel.Children.Add(interaction);
+        panel.Children.Add(status); panel.Children.Add(captureWarning);
+        var edit = new Button { Content = "Review / edit current deck" }; edit.Click += (_, _) => EditDeck(); panel.Children.Add(edit);
+        var correct = new Button { Content = "Correct reward names / upgrades" }; correct.Click += (_, _) => CorrectReward(); panel.Children.Add(correct);
+        var resume = new Button { Content = "Resume capture after correction" }; resume.Click += (_, _) => { corrected = false; stability.Reset(); currentReward = null; results.Children.Clear(); }; panel.Children.Add(resume);
+        panel.Children.Add(new ScrollViewer { Content = results, MaxHeight = 390, VerticalScrollBarVisibility = ScrollBarVisibility.Auto }); panel.Children.Add(interaction);
         var capture = new Button { Content = "Save diagnostic frame (opt-in required)", Margin = new Thickness(0, 8, 0, 0) };
         capture.Click += (_, _) => SaveDiagnostic(); panel.Children.Add(capture);
         var legal = new TextBlock { Text = "AGPL-3.0 • No warranty • See bundled LICENSE\nSingle-player only • Local heuristics", Foreground = Brushes.LightGray, FontSize = 11, Margin = new Thickness(0, 12, 0, 0) }; panel.Children.Add(legal);
         var quit = new Button { Content = "Quit Scout", Margin = new Thickness(0, 8, 0, 0) }; quit.Click += (_, _) => Close(); panel.Children.Add(quit);
-        Content = new Border { Background = new SolidColorBrush(Color.FromArgb(240, 17, 24, 39)), BorderBrush = Brushes.SlateGray, BorderThickness = new Thickness(1), CornerRadius = new CornerRadius(12), Child = panel };
+        Content = new Border { Background = new SolidColorBrush(Color.FromArgb(240, 17, 24, 39)), BorderBrush = Brushes.SlateGray, BorderThickness = new Thickness(1), CornerRadius = new CornerRadius(12), Child = new ScrollViewer { Content = panel, VerticalScrollBarVisibility = ScrollBarVisibility.Auto } };
         interaction.Click += (_, _) => SetInteractive(false);
         SourceInitialized += (_, _) => InitializeNative();
         timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(settings.PollMilliseconds) }; timer.Tick += async (_, _) => await Tick();
         Closed += (_, _) => { closed = true; timer.Stop(); Native.UnregisterHotKey(hwnd, 1); database.Dispose(); };
         status.Text = "Waiting for STS2. Use your configured interaction hotkey (default Ctrl+Shift+S).";
+    }
+    private void ConfigureRecognizer()
+    {
+        if (profile == null) return;
+        if (profile.GameVersion != pack.GameVersion)
+        {
+            recognizer = null; dataStatus = "Strategy data is for a different game version than calibration"; return;
+        }
+        if (profile.RewardNameRegions != null && pack.Catalog != null)
+        {
+            ocr ??= new TesseractOcr(Path.Combine(AppContext.BaseDirectory, "data", "ocr"));
+            recognizer = new RewardRecognizer(profile, pack, settings.Context.Character, ocr);
+        }
+        else recognizer = new TemplateRecognizer(pack.Catalog == null ? profile : profile with { Probes = profile.Probes.Where(p => p.Screen != Screen.CardReward || p.Kind == "screen").ToArray() }, pack);
+    }
+    private async void EditDeck()
+    {
+        if (dialogOpen) return;
+        dialogOpen = true; timer.Stop();
+        while (busy && !closed) await Task.Delay(50);
+        if (closed) return;
+        try
+        {
+            var editor = new DeckEditor(pack, settings.Context) { Owner = this };
+            if (editor.ShowDialog() == true && editor.Saved != null)
+            {
+                settings = settings with { Context = editor.Saved }; paths.AtomicWrite("settings.json", Json.Write(settings));
+                ConfigureRecognizer(); stability.Reset();
+                currentReward = null; replay = null; corrected = false; results.Children.Clear(); status.Text = "Deck saved. Focus STS2 to read the next reward.";
+            }
+        }
+        catch (Exception ex) { status.Text = "Could not save deck: " + ex.Message; paths.Log(ex.ToString()); }
+        finally { dialogOpen = false; if (!closed) timer.Start(); }
+    }
+    private async void CorrectReward()
+    {
+        if (dialogOpen) return;
+        dialogOpen = true; timer.Stop();
+        while (busy && !closed) await Task.Delay(50);
+        if (closed) return;
+        try
+        {
+            if (currentReward == null) { status.Text = "Wait for a stable CardReward first."; return; }
+            corrected = true;
+            var editor = new RewardCorrection(pack, settings.Context, currentReward) { Owner = this };
+            if (editor.ShowDialog() == true && editor.Corrected != null)
+            {
+                currentReward = editor.Corrected;
+                database.Save(currentReward, pack, settings.Context, []); ShowReward(currentReward);
+            }
+            else corrected = false;
+        }
+        catch (Exception ex) { corrected = false; status.Text = "Could not save correction: " + ex.Message; paths.Log(ex.ToString()); }
+        finally { dialogOpen = false; if (!closed) timer.Start(); }
+    }
+    private void ShowReward(Observation observation)
+    {
+        var ranked = engine.Rank(observation, settings.Context);
+        status.Text = $"{observation.Screen} • match {observation.Confidence:P0}\n" +
+            (observation.Screen == Screen.CardReward ? DeckRanking.BlockReason(pack, observation, settings.Context) ?? "Recommended: " + pack.Entities.Single(e => e.Id == ranked[0].EntityId).Name + (observation.Choices.Single(c => c.Slot == ranked[0].Slot).Upgraded ? "+" : "") : "Merchant heuristic ranking") +
+            $"\nCatalog {pack.Catalog?.Version}\nStrategy {pack.PackVersion} • cached {pack.Catalog?.RetrievedAt:yyyy-MM-dd}\n{dataStatus}" + (corrected ? "\nUSER CONFIRMED • capture paused; resume before next reward" : "");
+        results.Children.Clear();
+        foreach (var choice in observation.Choices.OrderBy(c => c.Slot))
+            results.Children.Add(new TextBlock { Text = $"Slot {choice.Slot + 1}: {pack.Entities.SingleOrDefault(e => e.Id == choice.EntityId)?.Name ?? "Unknown"}{(choice.Upgraded ? "+" : "")} • name match {choice.Confidence:P0}", Foreground = Brushes.Turquoise });
+        foreach (var r in ranked)
+        {
+            var title = new TextBlock { Text = $"\n{(r == ranked[0] ? "Recommended" : "Alternative")}: {pack.Entities.Single(e => e.Id == r.EntityId).Name} • {r.Score:0.##}\n" + string.Join("\n", r.Reasons.Where(reason => !reason.Contains("baseline") && !reason.Contains("adding to") && !reason.Contains("Mechanic source")).OrderByDescending(reason => reason.Contains("trigger") || reason.Contains("payoff")).Take(4)), Foreground = Brushes.White, TextWrapping = TextWrapping.Wrap };
+            results.Children.Add(title);
+            results.Children.Add(new Expander { Header = "Detailed score / sources", Foreground = Brushes.LightGray, Content = new TextBlock { Text = string.Join("\n", r.Reasons), TextWrapping = TextWrapping.Wrap } });
+        }
+        if (replay != null) results.Children.Add(new Expander { Header = "OCR diagnostics (raw text / rejected candidates)", Foreground = Brushes.LightGray, Content = new TextBox { Text = Json.Write(replay.Slots), IsReadOnly = true, TextWrapping = TextWrapping.Wrap } });
     }
     private void InitializeNative()
     {
@@ -95,13 +177,13 @@ public sealed class OverlayWindow : Window
     }
     private async Task Tick()
     {
-        if (busy || closed) return;
+        if (busy || closed || corrected) return;
         busy = true;
         try
         {
             var game = Native.FindGame(settings.ProcessName);
-            if (game.ProcessId != lastProcessId) { stability.Reset(); decisions.Reset(); latest = null; lastProcessId = game.ProcessId; }
-            if (game.Handle == 0) { status.Text = "Waiting for STS2. Launch through Steam; check processName in settings if needed."; results.Children.Clear(); stability.Reset(); decisions.Reset(); return; }
+            if (game.ProcessId != lastProcessId) { stability.Reset(); decisions.Reset(); currentReward = null; latest = null; lastProcessId = game.ProcessId; }
+            if (game.Handle == 0) { status.Text = "Waiting for STS2. Launch through Steam; check processName in settings if needed."; results.Children.Clear(); currentReward = null; stability.Reset(); decisions.Reset(); return; }
             var foreground = Native.GetForegroundWindow();
             if (foreground != game.Handle)
             {
@@ -115,12 +197,16 @@ public sealed class OverlayWindow : Window
             Left = point.X + settings.OffsetX; Top = point.Y + settings.OffsetY;
             var frame = await Task.Run(() => Native.Capture(game.Handle, game.ProcessId));
             if (closed) return;
-            if (frame == null) { status.Text = "Capture unavailable; use windowed/borderless mode and focus STS2."; results.Children.Clear(); stability.Reset(); decisions.Reset(); return; }
+            if (frame == null) { status.Text = "Capture unavailable; use windowed/borderless mode and focus STS2."; results.Children.Clear(); currentReward = null; stability.Reset(); decisions.Reset(); return; }
             latest = frame; lastFrameAt = DateTimeOffset.UtcNow;
-            if (recognizer == null) { status.Text = "Calibration required. Capture a diagnostic frame, then follow docs/calibration.md. No live recognition is claimed."; return; }
-            var observation = await Task.Run(() => recognizer.Recognize(frame, DateTimeOffset.UtcNow));
+            if (recognizer == null) { status.Text = "Calibration required. Capture a diagnostic frame, then follow docs/calibration.md. " + dataStatus; return; }
+            var observation = await Task.Run(() =>
+            {
+                if (recognizer is RewardRecognizer reward) { replay = reward.Replay(frame, DateTimeOffset.UtcNow); return replay.Observation; }
+                return recognizer.Recognize(frame, DateTimeOffset.UtcNow);
+            });
             if (closed) return;
-            if (observation.Screen == Screen.Unknown) { status.Text = "Unknown screen / insufficient confidence"; results.Children.Clear(); decisions.Reset(); }
+            if (observation.Screen == Screen.Unknown) { currentReward = null; status.Text = "Unknown screen / insufficient confidence"; results.Children.Clear(); decisions.Reset(); }
             var stable = stability.Push(observation);
             if (stable == null)
             {
@@ -129,10 +215,9 @@ public sealed class OverlayWindow : Window
             }
             var selections = decisions.Observe(stable);
             database.Save(stable, pack, settings.Context, selections);
-            var ranked = engine.Rank(stable, settings.Context);
-            status.Text = $"{stable.Screen} • match {stable.Confidence:P0}\n" + (ranked.Length == 0 ? "No recommendation: unknown offers, prices, or mismatched/unconfigured strategy data." : "Heuristic ranking; skipping/saving gold remains an option.");
-            results.Children.Clear();
-            foreach (var r in ranked.Take(6)) results.Children.Add(new TextBlock { Text = $"\n#{r.Slot + 1} {pack.Entities.Single(e => e.Id == r.EntityId).Name}  {r.Score:0.##}\n" + string.Join("\n", r.Reasons), Foreground = Brushes.White, TextWrapping = TextWrapping.Wrap, FontSize = 12 });
+            currentReward = stable.Screen == Screen.CardReward ? stable : null;
+            ShowReward(stable);
+
         }
         catch (Exception ex) { if (!closed) { status.Text = $"Scout paused this frame: {ex.Message}"; results.Children.Clear(); stability.Reset(); decisions.Reset(); paths.Log(ex.ToString()); } }
         finally { busy = false; }
