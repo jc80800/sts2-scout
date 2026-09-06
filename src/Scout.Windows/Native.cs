@@ -21,7 +21,7 @@ internal static class Native
     [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(nint hwnd, out uint processId);
     [DllImport("user32.dll", SetLastError = true)] internal static extern bool RegisterHotKey(nint hwnd, int id, uint modifiers, uint key);
     [DllImport("user32.dll")] internal static extern bool UnregisterHotKey(nint hwnd, int id);
-    [DllImport("user32.dll", SetLastError = true)] internal static extern bool SetWindowDisplayAffinity(nint hwnd, uint affinity);
+    [DllImport("user32.dll", SetLastError = true)] private static extern bool SetWindowDisplayAffinity(nint hwnd, uint affinity);
     [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW")] internal static extern nint GetWindowLongPtr(nint hwnd, int index);
     [DllImport("user32.dll", EntryPoint = "SetWindowLongPtrW")] internal static extern nint SetWindowLongPtr(nint hwnd, int index, nint value);
     [DllImport("user32.dll")] private static extern nint GetDC(nint hwnd);
@@ -32,6 +32,14 @@ internal static class Native
     [DllImport("gdi32.dll")] private static extern bool DeleteObject(nint obj);
     [DllImport("gdi32.dll")] private static extern bool DeleteDC(nint dc);
     [DllImport("gdi32.dll")] private static extern bool BitBlt(nint target, int x, int y, int width, int height, nint source, int sx, int sy, uint operation);
+
+    internal static bool TryExcludeWindowFromCapture(nint hwnd, out int error)
+    {
+        const uint WdaExcludeFromCapture = 0x11;
+        var excluded = SetWindowDisplayAffinity(hwnd, WdaExcludeFromCapture);
+        error = excluded ? 0 : Marshal.GetLastWin32Error();
+        return excluded;
+    }
 
     internal static (nint Handle, int ProcessId) FindGame(string name)
     {
@@ -47,7 +55,8 @@ internal static class Native
     }
     internal static GrayFrame? Capture(nint hwnd, int processId)
     {
-        // Capture only the foreground client's rectangle. Scout is excluded by display affinity.
+        // Capture only the foreground client's rectangle. Display affinity normally excludes Scout,
+        // but callers deliberately continue with potentially contaminated frames if affinity is unavailable.
         // No rendering hooks, process handles, memory access, game files, or PrintWindow messages.
         if (hwnd == 0 || GetForegroundWindow() != hwnd || IsIconic(hwnd) || !GetClientRect(hwnd, out var r)) return null;
         GetWindowThreadProcessId(hwnd, out var actualId);

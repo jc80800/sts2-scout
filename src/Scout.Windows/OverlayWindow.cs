@@ -21,10 +21,11 @@ public sealed class OverlayWindow : Window
     private readonly DecisionTracker decisions = new();
     private readonly DispatcherTimer timer;
     private readonly TextBlock status = new() { TextWrapping = TextWrapping.Wrap, Foreground = Brushes.White, FontSize = 14 };
+    private readonly TextBlock captureWarning = new() { TextWrapping = TextWrapping.Wrap, Foreground = Brushes.Gold, FontSize = 12, Margin = new Thickness(0, 8, 0, 0), Visibility = Visibility.Collapsed };
     private readonly StackPanel results = new();
     private readonly Button interaction = new() { Content = "Return to click-through", Margin = new Thickness(0, 8, 0, 0) };
     private nint hwnd;
-    private bool interactive, busy, closed, affinity;
+    private bool interactive, busy, closed;
     private int lastProcessId;
     private GrayFrame? latest;
     private DateTimeOffset lastFrameAt;
@@ -40,10 +41,12 @@ public sealed class OverlayWindow : Window
         if (File.Exists(calibration)) recognizer = new(Json.Read<Calibration>(calibration), pack);
         engine = new(pack); database = new(paths);
         Width = 370; SizeToContent = SizeToContent.Height; MaxHeight = 720; Left = settings.OffsetX; Top = settings.OffsetY;
-        Title = "Sts2Scout"; AllowsTransparency = true; Background = Brushes.Transparent; WindowStyle = WindowStyle.None; ResizeMode = ResizeMode.NoResize; Topmost = true; ShowActivated = false; Opacity = settings.Opacity;
+        // Display affinity is unreliable for the layered HWND created by AllowsTransparency.
+        // An opaque, composition-managed HWND trades transparent corner pixels for reliable exclusion.
+        Title = "Sts2Scout"; AllowsTransparency = false; Background = new SolidColorBrush(Color.FromRgb(17, 24, 39)); WindowStyle = WindowStyle.None; ResizeMode = ResizeMode.NoResize; Topmost = true; ShowActivated = false; Opacity = settings.Opacity;
         var panel = new StackPanel { Margin = new Thickness(18) };
         panel.Children.Add(new TextBlock { Text = "SCOUT  /  STS2", FontSize = 21, FontWeight = FontWeights.Bold, Foreground = Brushes.Turquoise });
-        panel.Children.Add(status); panel.Children.Add(results); panel.Children.Add(interaction);
+        panel.Children.Add(status); panel.Children.Add(captureWarning); panel.Children.Add(results); panel.Children.Add(interaction);
         var capture = new Button { Content = "Save diagnostic frame (opt-in required)", Margin = new Thickness(0, 8, 0, 0) };
         capture.Click += (_, _) => SaveDiagnostic(); panel.Children.Add(capture);
         var legal = new TextBlock { Text = "AGPL-3.0 • No warranty • See bundled LICENSE\nSingle-player only • Local heuristics", Foreground = Brushes.LightGray, FontSize = 11, Margin = new Thickness(0, 12, 0, 0) }; panel.Children.Add(legal);
@@ -59,11 +62,16 @@ public sealed class OverlayWindow : Window
     {
         hwnd = new WindowInteropHelper(this).Handle;
         HwndSource.FromHwnd(hwnd)?.AddHook(WindowMessage);
-        affinity = Native.SetWindowDisplayAffinity(hwnd, 0x11);
+        var affinity = Native.TryExcludeWindowFromCapture(hwnd, out var affinityError);
         var hotkey = Native.RegisterHotKey(hwnd, 1, settings.HotkeyModifiers | 0x4000, settings.HotkeyVirtualKey);
         SetInteractive(!settings.ClickThrough || !hotkey);
         if (!hotkey) MessageBox.Show("Scout's hotkey is already in use. Interaction stays enabled. Change hotkeyModifiers/hotkeyVirtualKey in settings.json and restart.", "Scout");
-        if (!affinity) { status.Text = "Capture disabled: Windows could not exclude Scout from screen capture."; paths.Log("Display affinity failed; capture disabled"); }
+        if (!affinity)
+        {
+            captureWarning.Text = "Warning: Scout could not exclude its overlay from screen capture.\nCapture is continuing in fallback mode; frames may contain Scout pixels where the overlay overlaps STS2.";
+            captureWarning.Visibility = Visibility.Visible;
+            paths.Log($"SetWindowDisplayAffinity(WDA_EXCLUDEFROMCAPTURE) failed. Win32Error={affinityError}; Hwnd=0x{hwnd:X}; AllowsTransparency={AllowsTransparency}; OS={Environment.OSVersion}. Capture is continuing in fallback mode and frames may contain overlay pixels.");
+        }
         timer.Start();
     }
     private nint WindowMessage(nint handle, int message, nint wParam, nint lParam, ref bool handled)
@@ -87,7 +95,7 @@ public sealed class OverlayWindow : Window
     }
     private async Task Tick()
     {
-        if (busy || closed || !affinity) return;
+        if (busy || closed) return;
         busy = true;
         try
         {
