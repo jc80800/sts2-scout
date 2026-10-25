@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using Scout.Core;
 using Scout.Storage;
+using Scout.Ocr;
 
 namespace Scout.Windows;
 
@@ -15,7 +16,9 @@ public sealed class OverlayWindow : Window
     private readonly Settings settings;
     private readonly StrategyPack pack;
     private readonly ScoutDatabase database;
-    private readonly TemplateRecognizer? recognizer;
+    private readonly IScreenRecognizer recognizer;
+    private readonly TesseractOcr ocr;
+    private RunContext Context => settings.Context.GameVersion == "unconfigured" ? settings.Context with { GameVersion = pack.GameVersion } : settings.Context;
     private readonly RecommendationEngine engine;
     private readonly StabilityFilter stability = new();
     private readonly DecisionTracker decisions = new();
@@ -36,9 +39,10 @@ public sealed class OverlayWindow : Window
         settings = File.Exists(settingsFile) ? Json.Read<Settings>(settingsFile) : new Settings(); settings.Validate();
         if (!File.Exists(settingsFile)) paths.Write("settings.json", Json.Write(settings));
         var localPack = paths.FilePath("strategy-pack.json");
-        pack = Json.Read<StrategyPack>(File.Exists(localPack) ? localPack : Path.Combine(AppContext.BaseDirectory, "data", "strategy-pack.json")); PackValidation.Validate(pack);
-        var calibration = paths.FilePath("calibration.json");
-        if (File.Exists(calibration)) recognizer = new(Json.Read<Calibration>(calibration), pack);
+        var suppliedPack = File.Exists(localPack) ? Json.Read<StrategyPack>(localPack) : null;
+        pack = suppliedPack is { Entities.Length: > 0 } ? suppliedPack : Json.Read<StrategyPack>(Path.Combine(AppContext.BaseDirectory, "data", "strategy-pack.json")); PackValidation.Validate(pack);
+        ocr = new TesseractOcr(Path.Combine(AppContext.BaseDirectory, "tessdata"));
+        recognizer = new CardRewardRecognizer(ocr, pack, settings.Character);
         engine = new(pack); database = new(paths);
         Width = 370; SizeToContent = SizeToContent.Height; MaxHeight = 720; Left = settings.OffsetX; Top = settings.OffsetY;
         // Display affinity is unreliable for the layered HWND created by AllowsTransparency.
@@ -55,7 +59,7 @@ public sealed class OverlayWindow : Window
         interaction.Click += (_, _) => SetInteractive(false);
         SourceInitialized += (_, _) => InitializeNative();
         timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(settings.PollMilliseconds) }; timer.Tick += async (_, _) => await Tick();
-        Closed += (_, _) => { closed = true; timer.Stop(); Native.UnregisterHotKey(hwnd, 1); database.Dispose(); };
+        Closed += (_, _) => { closed = true; timer.Stop(); Native.UnregisterHotKey(hwnd, 1); database.Dispose(); if (!busy) ocr.Dispose(); };
         status.Text = "Waiting for STS2. Use your configured interaction hotkey (default Ctrl+Shift+S).";
     }
     private void InitializeNative()
@@ -117,9 +121,8 @@ public sealed class OverlayWindow : Window
             if (closed) return;
             if (frame == null) { status.Text = "Capture unavailable; use windowed/borderless mode and focus STS2."; results.Children.Clear(); stability.Reset(); decisions.Reset(); return; }
             latest = frame; lastFrameAt = DateTimeOffset.UtcNow;
-            if (recognizer == null) { status.Text = "Calibration required. Capture a diagnostic frame, then follow docs/calibration.md. No live recognition is claimed."; return; }
             var observation = await Task.Run(() => recognizer.Recognize(frame, DateTimeOffset.UtcNow));
-            if (closed) return;
+            if (closed) { ocr.Dispose(); return; }
             if (observation.Screen == Screen.Unknown) { status.Text = "Unknown screen / insufficient confidence"; results.Children.Clear(); decisions.Reset(); }
             var stable = stability.Push(observation);
             if (stable == null)
@@ -128,9 +131,9 @@ public sealed class OverlayWindow : Window
                 return;
             }
             var selections = decisions.Observe(stable);
-            database.Save(stable, pack, settings.Context, selections);
-            var ranked = engine.Rank(stable, settings.Context);
-            status.Text = $"{stable.Screen} • match {stable.Confidence:P0}\n" + (ranked.Length == 0 ? "No recommendation: unknown offers, prices, or mismatched/unconfigured strategy data." : "Heuristic ranking; skipping/saving gold remains an option.");
+            database.Save(stable, pack, Context, selections);
+            var ranked = engine.Rank(stable, Context);
+            status.Text = $"{stable.Screen} • match {stable.Confidence:P0}\n" + (ranked.Length == 0 ? "No recommendation: unknown offers, prices, or mismatched/unconfigured strategy data." : "Heuristic ranking; skipping remains an option.") + $"\nData: {pack.GameVersion} MAIN • " + (Context.Deck.Length == 0 ? "No deck supplied: baseline advice" : "Using declared deck context");
             results.Children.Clear();
             foreach (var r in ranked.Take(6)) results.Children.Add(new TextBlock { Text = $"\n#{r.Slot + 1} {pack.Entities.Single(e => e.Id == r.EntityId).Name}  {r.Score:0.##}\n" + string.Join("\n", r.Reasons), Foreground = Brushes.White, TextWrapping = TextWrapping.Wrap, FontSize = 12 });
         }

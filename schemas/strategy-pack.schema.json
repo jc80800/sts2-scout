@@ -5,7 +5,10 @@
   "additionalProperties": false,
   "properties": {
     "schemaVersion": {
-      "const": 1
+      "enum": [
+        1,
+        2
+      ]
     },
     "packVersion": {
       "type": "string",
@@ -53,6 +56,112 @@
             "type": "number",
             "minimum": 0,
             "maximum": 10
+          },
+          "baselineReason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "facts": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "normalizedName": {
+                "type": "string"
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "character": {
+                "type": "string",
+                "enum": [
+                  "ironclad",
+                  "silent",
+                  "defect",
+                  "regent",
+                  "necrobinder",
+                  "colorless",
+                  "shared",
+                  "event",
+                  "curse",
+                  "token",
+                  "status",
+                  "quest"
+                ]
+              },
+              "rarity": {
+                "type": "string"
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "cost": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "starCost": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "target": {
+                "type": "string"
+              },
+              "rewardPool": {
+                "type": "boolean"
+              },
+              "multiplayerOnly": {
+                "type": "boolean"
+              },
+              "values": {
+                "type": "object"
+              },
+              "upgrade": {
+                "type": "object"
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gameVersion": {
+                "type": "string"
+              },
+              "sourceId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "normalizedName",
+              "aliases",
+              "character",
+              "rarity",
+              "type",
+              "cost",
+              "starCost",
+              "target",
+              "rewardPool",
+              "multiplayerOnly",
+              "values",
+              "upgrade",
+              "keywords",
+              "gameVersion",
+              "sourceId"
+            ]
           }
         },
         "required": [
@@ -208,6 +317,67 @@
           "reason"
         ]
       }
+    },
+    "catalog": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "branch": {
+          "const": "main"
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "url",
+              "gameVersion",
+              "branch",
+              "sha256",
+              "rights"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "gameVersion": {
+                "type": "string"
+              },
+              "branch": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "rights": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "strategyMethod": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "branch",
+        "generatedAt",
+        "sources",
+        "strategyMethod"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -216,5 +386,44 @@
     "gameVersion",
     "entities",
     "claims"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schemaVersion": {
+            "const": 2
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "catalog"
+        ],
+        "properties": {
+          "catalog": {
+            "type": "object"
+          },
+          "entities": {
+            "minItems": 1,
+            "items": {
+              "required": [
+                "facts",
+                "baselineReason"
+              ],
+              "properties": {
+                "facts": {
+                  "type": "object"
+                },
+                "baselineReason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   ]
 }

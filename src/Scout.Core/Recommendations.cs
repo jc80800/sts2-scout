@@ -14,7 +14,25 @@ public sealed class RecommendationEngine(StrategyPack pack)
             if (observation.Screen == Screen.Merchant && (choice.Price == null || choice.PriceConfidence < .9 || choice.Price < 0 || choice.Price > context.Gold)) continue;
             var score = entity.Baseline;
             var reasons = new List<string> { FormattableString.Invariant($"Baseline {entity.Baseline:0.##} (heuristic, not win probability)") };
-            void Add(double value, string reason) { score += value; reasons.Add(FormattableString.Invariant($"{value:+0.##;-0.##;0}: {reason}")); }
+            void Add(double value, string reason) { if (value == 0) return; score += value; reasons.Add(FormattableString.Invariant($"{value:+0.##;-0.##;0}: {reason}")); }
+            if (entity.BaselineReason != null) reasons.Add(entity.BaselineReason);
+            var knownDeck = context.Deck.Select(id => pack.Entities.SingleOrDefault(e => e.Id == id)).Where(e => e != null).Cast<Entity>().ToArray();
+            if (entity.Kind == EntityKind.Card && pack.SchemaVersion >= 2 && knownDeck.Length >= 5)
+            {
+                foreach (var role in new[] { "aoe", "draw", "block" })
+                {
+                    var existing = knownDeck.Count(e => e.Tags.Contains(role));
+                    var needed = role == "aoe" ? existing == 0 : role == "draw" ? existing < 2 : existing < knownDeck.Length / 4;
+                    if (needed && entity.Tags.Contains(role) && !context.Needs.Contains(role)) Add(role == "aoe" ? 1.5 : 1, $"known deck is short on {role}");
+                }
+                foreach (var requirement in entity.Tags.Where(t => t.StartsWith("needs:", StringComparison.Ordinal)))
+                {
+                    var tag = requirement[6..];
+                    var support = knownDeck.Count(e => e.Tags.Contains(tag) && !e.Tags.Contains("needs:" + tag));
+                    Add(support >= 2 ? Math.Min(2, support * .65) : -1.5, support >= 2 ? $"{support} known cards support {tag}" : $"insufficient known {tag} support for this payoff");
+                }
+                if (context.Act == 1 && entity.Tags.Contains("frontloaded") && knownDeck.Count(e => e.Tags.Contains("frontloaded") && e.Facts?.Rarity != "Basic") < 2) Add(1, "early deck needs immediate damage");
+            }
             var copies = context.Deck.Count(id => id == entity.Id);
             if (entity.Kind == EntityKind.Card)
             {

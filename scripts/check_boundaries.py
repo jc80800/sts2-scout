@@ -21,7 +21,7 @@ for path in (root / "src").rglob("*.csproj"):
         if not (path.parent / ref.attrib["Include"]).resolve().is_relative_to(root / "src"):
             errors.append(f"{path}: runtime references development tools")
     for dep in tree.findall(".//PackageReference"):
-        if dep.attrib["Include"] not in {"Microsoft.Data.Sqlite", "SQLitePCLRaw.bundle_e_sqlite3"}:
+        if dep.attrib["Include"] not in {"Microsoft.Data.Sqlite", "SQLitePCLRaw.bundle_e_sqlite3", "Tesseract"}:
             errors.append(f"{path}: runtime dependency requires boundary review")
 if len(sys.argv) > 1:
     artifact = Path(sys.argv[1])
