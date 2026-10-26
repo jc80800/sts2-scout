@@ -26,6 +26,9 @@ internal static class Program
             var context = new RunContext("0.107.1", [], [], [], [], Character: "ironclad", Cards: [new("sts2.bash", 1, false)]);
             var deck = new DeckEditor(pack, context);
             Render(deck, output, "deck");
+            var addButton = FindButton(deck, "Add card");
+            var addPosition = addButton.TranslatePoint(new Point(), deck);
+            Require(addPosition.Y >= 0 && addPosition.Y + addButton.ActualHeight <= deck.ActualHeight, "Add card is outside the visible window");
             // The all-card search must include Stampede, even before any OCR setup exists.
             var search = Descendants<TextBox>(deck).Single(t => t.Text == "");
             search.Text = "Stampede";

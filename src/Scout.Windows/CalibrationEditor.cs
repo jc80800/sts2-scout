@@ -13,6 +13,7 @@ public sealed class CalibrationEditor : Window
     public Calibration? Saved { get; private set; }
     public CalibrationEditor(GrayFrame frame, string gameVersion)
     {
+        Style = (Style)Application.Current.FindResource(typeof(Window));
         Title = "Scout — Set up scan"; Width = 1100; Height = 820; MinWidth = 720; MinHeight = 540;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
         var root = new DockPanel { Margin = new Thickness(20) }; Content = root;

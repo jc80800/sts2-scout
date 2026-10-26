@@ -37,6 +37,7 @@ public sealed class OverlayWindow : Window
     private DateTimeOffset lastFrameAt;
     public OverlayWindow(ScoutPaths paths)
     {
+        Style = (Style)Application.Current.FindResource(typeof(Window));
         this.paths = paths;
         var settingsFile = paths.FilePath("settings.json");
         settings = File.Exists(settingsFile) ? Json.Read<Settings>(settingsFile) : new Settings(); settings.Validate();
@@ -104,6 +105,7 @@ public sealed class OverlayWindow : Window
     private void ConfigureRecognizer()
     {
         recognizer = null;
+        dataStatus = $"{pack.Entities.Length} cards • bundled catalog • game {pack.GameVersion}";
         if (profile == null) return;
         if (profile.GameVersion != pack.GameVersion)
         {

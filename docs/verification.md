@@ -1,3 +1,15 @@
+# Fresh-start companion verification (2026-10-25)
+
+The new build loads only its bundled full catalog, starts a new run once when upgrading from legacy setup, normalizes a leading `v` in user patch strings, upgrades compatible 16:9 OCR calibration, and provides manual reward entry plus visual scan calibration inside the app. SQLite provenance uses content hashes so packs sharing a display version do not block advice. No local cache deletion or source checkout is needed for setup.
+
+Local .NET 10.0.403 Release build passed with zero warnings/errors. All **50 core/storage/OCR tests** passed on macOS, including new calibration and catalog regressions and the revised database collision test. JSON schema, pinned OCR integrity, runtime boundaries, and seeder smoke checks passed.
+
+The Windows workflow now also runs `tests/Scout.Windows.Smoke`: it opens and renders the actual WPF windows, finds Stampede, adds/saves a deck card, enters three rewards, and obtains rankings without OCR calibration. It verifies startup with an obsolete local catalog and uploads `ui-smoke` PNGs for inspection. This exercises UI wiring and rendering, **not live game capture, recognition accuracy, or a clean-machine install**. The full packaged app and native OCR tests run on Windows Actions.
+
+The initial Windows run for this change passed all checks; inspection of its rendered windows prompted a further compact deck-layout improvement. Use the final commit's successful Windows run for download and its `ui-smoke` artifact for the final layouts.
+
+---
+
 # Reward milestone verification (2026-09-06)
 
 Implemented on macOS arm64 with .NET SDK 10.0.400 / runtime 10.0.11. Windows WPF is cross-compiled; **no live Windows/game validation was performed here**. Windows Actions executes the actual shipped native OCR libraries and uploads the package; inspect the run for the exact branch commit.
