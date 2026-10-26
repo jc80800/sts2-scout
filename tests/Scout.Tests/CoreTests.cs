@@ -171,18 +171,20 @@ public sealed class CoreTests(ITestOutputHelper output)
         Assert.True(filter.IsStable);
     }
     [Fact]
-    public void DatabaseRollsBackOnPackCollisionAndRejectsFutureSchema()
+    public void DatabaseKeepsDistinctPackContentsAndRejectsFutureSchema()
     {
         using var temp = new Temp(); var paths = new ScoutPaths(temp.Path);
         using (var db = new Scout.Storage.ScoutDatabase(paths))
         {
             db.Save(Reward, Pack, Context, []);
-            Assert.Throws<InvalidDataException>(() => db.Save(Reward, Pack with { Entities = [Pack.Entities[0]] }, Context, []));
+            db.Save(Reward, Pack with { Entities = [Pack.Entities[0]] }, Context, []);
         }
         using (var connection = new SqliteConnection($"Data Source={paths.FilePath("scout.db")};Pooling=False"))
         {
             connection.Open(); using var command = connection.CreateCommand();
-            command.CommandText = "SELECT COUNT(*) FROM observations"; Assert.Equal(1L, command.ExecuteScalar());
+            command.CommandText = "SELECT COUNT(*) FROM observations"; Assert.Equal(2L, command.ExecuteScalar());
+            command.CommandText = "SELECT COUNT(*) FROM provenance"; Assert.Equal(2L, command.ExecuteScalar());
+            command.CommandText = "SELECT COUNT(*) FROM observations o JOIN provenance p ON o.pack_version = p.pack_version"; Assert.Equal(2L, command.ExecuteScalar());
             command.CommandText = "PRAGMA user_version=99"; command.ExecuteNonQuery();
         }
         Assert.Throws<InvalidDataException>(() => new Scout.Storage.ScoutDatabase(paths));

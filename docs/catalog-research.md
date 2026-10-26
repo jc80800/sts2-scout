@@ -33,7 +33,7 @@ python scripts/validate_data.py C:\scout-research\candidate\strategy-pack.json
 dotnet run --project tools/Scout.Seeder -- install C:\scout-research\candidate\strategy-pack.json "$env:LOCALAPPDATA" 0.107.1
 ```
 
-Quit Scout before installing. The runtime validates strict JSON plus semantic constraints too: versions, count, IDs, metadata, provenance and claims. Installation atomically replaces only Scout's own file after validation, retaining the prior valid pack. At startup a malformed/incompatible local file falls back to `strategy-pack.last-valid.json`, then the bundled valid artifact; status reports rejection and cached age. A bundled patch mismatch can load the app/deck editor but never yields a recommendation. No automatic web research happens in the runtime.
+The development install/cache helpers remain available for research and CLI tests. The Windows companion now **always loads the catalog bundled with the executable**; local `strategy-pack.json` and `strategy-pack.last-valid.json` do not override it. To ship reviewed data, replace the repository's bundled data and build a new Windows artifact. Runtime validation checks versions, count, IDs, metadata, provenance, and claims. A patch mismatch blocks advice. No automatic web research happens in the runtime.
 
 ## Optional remote manifest boundary
 

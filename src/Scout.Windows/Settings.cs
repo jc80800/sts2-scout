@@ -9,7 +9,8 @@ public sealed record Settings
     public double OffsetX { get; init; } = 24;
     public double OffsetY { get; init; } = 80;
     public double Opacity { get; init; } = .9;
-    public bool ClickThrough { get; init; } = true;
+    public bool ClickThrough { get; init; } = false;
+    public int SetupVersion { get; init; }
     public uint HotkeyModifiers { get; init; } = 6; // Control | Shift
     public uint HotkeyVirtualKey { get; init; } = 0x53; // S
     public bool DiagnosticCapture { get; init; }

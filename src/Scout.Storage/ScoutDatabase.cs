@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using Microsoft.Data.Sqlite;
 using Scout.Core;
 
@@ -39,14 +41,13 @@ public sealed class ScoutDatabase : IDisposable
             foreach (var (key, value) in values) cmd.Parameters.AddWithValue(key, value ?? DBNull.Value);
             cmd.ExecuteNonQuery();
         }
-        Execute("INSERT OR IGNORE INTO provenance VALUES($v,$j)", ("$v", pack.PackVersion), ("$j", Json.Write(pack)));
-        using (var check = connection.CreateCommand())
-        {
-            check.Transaction = tx; check.CommandText = "SELECT pack_json FROM provenance WHERE pack_version=$v"; check.Parameters.AddWithValue("$v", pack.PackVersion);
-            if ((string?)check.ExecuteScalar() != Json.Write(pack)) throw new InvalidDataException("Pack version collision");
-        }
+        // Content-addressed provenance allows different packs with the same display version.
+        // Existing history keeps its original keys; new observations reference the exact content.
+        var packJson = Json.Write(pack);
+        var packKey = pack.PackVersion + "/sha256:" + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(packJson)));
+        Execute("INSERT OR IGNORE INTO provenance VALUES($v,$j)", ("$v", packKey), ("$j", packJson));
         var known = double.IsFinite(observation.Confidence) && observation.Confidence is >= .9 and <= 1 && Enum.IsDefined(observation.Screen) && observation.Screen != Screen.Unknown;
-        Execute("INSERT INTO observations(at,session,screen,confidence,profile_version,frame_hash,pack_version,context_json) VALUES($at,$session,$s,$c,$p,$h,$v,$ctx)", ("$at", observation.At.ToString("O")), ("$session", session), ("$s", known ? observation.Screen.ToString() : "Unknown"), ("$c", known ? observation.Confidence : 0), ("$p", observation.ProfileVersion), ("$h", observation.FrameHash), ("$v", pack.PackVersion), ("$ctx", Json.Write(context)));
+        Execute("INSERT INTO observations(at,session,screen,confidence,profile_version,frame_hash,pack_version,context_json) VALUES($at,$session,$s,$c,$p,$h,$v,$ctx)", ("$at", observation.At.ToString("O")), ("$session", session), ("$s", known ? observation.Screen.ToString() : "Unknown"), ("$c", known ? observation.Confidence : 0), ("$p", observation.ProfileVersion), ("$h", observation.FrameHash), ("$v", packKey), ("$ctx", Json.Write(context)));
         using var idCommand = connection.CreateCommand(); idCommand.Transaction = tx; idCommand.CommandText = "SELECT last_insert_rowid()";
         var id = (long)idCommand.ExecuteScalar()!;
         foreach (var choice in observation.Choices)

@@ -1,24 +1,17 @@
-# Local diagnostic calibration
+# Set up card scanning
 
-Scout ships no game imagery or recognition profile. **CardReward entity recognition now uses local OCR; see [reward setup](card-reward-mvp.md). Run `reward-regions <profile>` to add three name crops while retaining the working screen probe. Do not add per-card reward templates.** The instructions below describe legacy screen and merchant template calibration. It normalizes rectangular grayscale samples to 32×16 pixels, uses mean absolute pixel difference, requires a threshold and runner-up margin, and refuses aspect-ratio mismatches. “Confidence” is a match score, not a statistically calibrated probability. Whole prices, entity labels and upgrades require their own templates; partial OCR guessing is not used.
+Everything needed for setup is included in the Windows download. No SDK, source checkout, command shell, or manually edited JSON is required.
 
-1. Enable diagnostics and capture a reward frame and merchant frame as described in the Windows guide. Use a fixed resolution/UI scale, language, game patch and stable non-hover state. PGM P2 is a plain grayscale image format readable by common image tools. Do not commit your game captures without checking rights.
-2. Prepare a local entity catalog and strategy pack using the seeding guide; the empty bundled pack does not supply game IDs. Store the pack as `%LOCALAPPDATA%\Sts2Scout\strategy-pack.json`.
-3. From a source checkout, run the development calibration command. Coordinates are normalized client fractions (x / client width, y / client height, region width / client width, region height / client height). Choose small, distinctive, static screen-title regions and item-name regions; avoid animated backgrounds, pointer highlights or full-card artwork. The following values are illustrative geometry, **not measured STS2 coordinates**:
+1. Open **Edit deck**, select your character, enter your actual game version, and save your current deck. The bundled catalog supports **0.107.1**. A leading `v` is accepted; other patches remain unsupported.
+2. In the game, reach an unhovered three-card reward and leave the game focused for a few seconds. If Scout is paused after manual entry, select **Resume scan** first.
+3. Return to Scout within 30 seconds. Expand **Scan setup** and select **Set up scan**.
+4. On the captured image, draw a tight box around the reward heading. Then draw the left, middle, and right card names in order. Include each complete name and any trailing `+`; exclude cost badges and artwork. You can select a step again to redraw its box.
+5. Select **Save scan setup**, then focus the game. Three matching frames are needed before advice appears.
 
-```powershell
-$scout = "$env:LOCALAPPDATA\Sts2Scout"
-$frame = "$scout\diagnostic-YOUR-TIMESTAMP.pgm"
-$profile = "$scout\calibration.json"
-dotnet run --project tools/Scout.Seeder -- calibrate $profile $frame screen CardReward 0 reward 0.3 0.05 0.4 0.08 YOUR-PATCH
-dotnet run --project tools/Scout.Seeder -- calibrate $profile $frame entity CardReward 0 YOUR-CARD-ID 0.1 0.3 0.2 0.08 YOUR-PATCH
-```
+The image is used in memory; setup saves only the small heading template and region coordinates under `%LOCALAPPDATA%\Sts2Scout\calibration.json`. Full images are saved only when you enable **Allow saving diagnostic images** and explicitly press **Save image**.
 
-4. Add one screen probe per supported screen, and entity probes per visible slot (zero-based indices). Use `Merchant` for merchant frames. Repeating the same kind/screen/slot with a new label adds a competing template in the same region. A repeated label replaces its old template. Add all supported entity alternatives for each slot. Ambiguous matches become unknown.
-5. Add merchant price templates using `price Merchant 0 75 ... YOUR-PATCH` (75 is an example known price label). Every distinct supported displayed price needs a template. Add `upgrade CardReward 0 upgraded ... YOUR-PATCH` only where a distinct upgrade indicator exists. Missing upgrade probes mean “no recognized upgrade,” not a verified base card.
-You can also calibrate a `selection` probe with the selected entity ID as its label. A stable visual indicator produces an unconfirmed selection hypothesis only when its entity matches the recognized offered slot; hover highlighting is not proof of a decision.
+Test multiple rewards and non-reward screens. If names stay unread, use **Enter cards** for manual advice and adjust the regions in **Set up scan**. Screen match is separate from card-name recognition and is not a probability. The setup image must actually show a reward; selecting a combat heading will calibrate the wrong screen.
 
-6. Keep all templates in one profile at the same aspect ratio. Set `context.gameVersion` to `YOUR-PATCH` and restart Scout. Bad profiles fail at startup with an error rather than silently relaxing recognition. Test both supported screens, negatives, hovers, tooltips and transitions before trusting local results.
-7. If a patch, language, UI scale or appearance changes, recalibrate. Back up the old profile and remove it to start clean. The CLI updates the profile version each time; archived observations retain that version.
+Existing 16:9 profiles without OCR regions receive the default name regions automatically. The `v` prefix is normalized, and old five-card reward templates are removed. Other aspect ratios need the visual setup above. Different patches are not silently relabeled. Recalibrate after resolution/aspect, UI scale, or layout changes.
 
-The checked-in synthetic test profile is a JSON structure example only. Do not install it for STS2. `RewardRecognizer` implements `IScreenRecognizer` using the bundled local OCR engine and canonical catalog. Calibrated template matching currently handles card/relic/potion/service IDs identically; entity kinds come from the local catalog. No accuracy claim applies beyond the synthetic fixtures. There is no automatic calibration UI or game dataset download.
+Merchant calibration remains a development-only legacy feature and is outside the card-reward MVP. No game screenshots or player calibration are bundled in the executable.

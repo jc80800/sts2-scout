@@ -2,7 +2,7 @@
 
 Windows-only, external single-player companion for Slay the Spire 2. Scout captures the foreground game, detects calibrated CardReward screens, reads three card names with local OCR, and ranks offers against a deck maintained in its editor. It never selects a card or opens game files.
 
-The bundled **577-card v0.107.1 catalog** includes factual provenance and explicit uncertainty. Recommendations are deterministic feature heuristics, not win probabilities. English OCR requires three calibrated name regions and can withhold uncertain readings; the overlay provides correction. The existing screen detector and three-frame stability filter remain. Merchant support retains its legacy behavior and is outside this milestone.
+The bundled **577-card v0.107.1 catalog** includes factual provenance and explicit uncertainty. Recommendations are deterministic feature heuristics, not win probabilities. English OCR requires three calibrated name regions and can withhold uncertain readings; the resizable companion window provides manual card entry and visual scan setup. Old local strategy files cannot override the bundled catalog. The existing screen detector and three-frame stability filter remain. Merchant support retains its legacy behavior and is outside this milestone.
 
 - [First Windows recommendation, deck editor, replay and limitations](docs/card-reward-mvp.md)
 - [Catalog research, sources and refresh](docs/catalog-research.md)
