@@ -30,7 +30,7 @@ internal static class Program
             var addPosition = addButton.TranslatePoint(new Point(), deck);
             Require(addPosition.Y >= 0 && addPosition.Y + addButton.ActualHeight <= deck.ActualHeight, "Add card is outside the visible window");
             // The all-card search must include Stampede, even before any OCR setup exists.
-            var search = Descendants<TextBox>(deck).Single(t => t.Text == "");
+            var search = Descendants<TextBox>(deck).Single(t => t.ToolTip is string tip && tip.StartsWith("Search", StringComparison.Ordinal));
             search.Text = "Stampede";
             var found = Descendants<ListBox>(deck).First();
             Require(found.Items.Count == 1, "Stampede missing from full catalog search");
