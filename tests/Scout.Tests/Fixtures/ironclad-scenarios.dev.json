@@ -1,0 +1,1859 @@
+[
+  {
+    "id": "S01",
+    "act": 1,
+    "ascension": 0,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.anger",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.twin_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.feel_no_pain",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.anger",
+      "sts2.twin_strike"
+    ],
+    "acceptable": [],
+    "tags": [
+      "unsupported-payoff",
+      "unsupported-synergy"
+    ],
+    "rationale": "First reward wants frontload; Feel No Pain has no exhaust enablers yet."
+  },
+  {
+    "id": "S02",
+    "act": 1,
+    "ascension": 5,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ascenders_bane",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.battle_trance",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.uppercut",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.setup_strike",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.uppercut",
+      "sts2.battle_trance"
+    ],
+    "acceptable": [],
+    "tags": [
+      "close-call"
+    ],
+    "rationale": "Close call: Uppercut is the only Weak source and adds Vulnerable; Battle Trance is cheap draw."
+  },
+  {
+    "id": "S03",
+    "act": 2,
+    "ascension": 10,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.feel_no_pain",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.dark_embrace",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.burning_pact",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.second_wind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.stoke",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.forgotten_ritual",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ashen_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.impervious",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.twin_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.setup_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.iron_wave",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "skip"
+    ],
+    "acceptable": [],
+    "tags": [
+      "skip"
+    ],
+    "rationale": "Engine deck has no unmet job; each common dilutes it."
+  },
+  {
+    "id": "S04",
+    "act": 1,
+    "ascension": 7,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.havoc",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.cinder",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.thunderclap",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "skip"
+    ],
+    "acceptable": [
+      "sts2.thunderclap"
+    ],
+    "tags": [
+      "skip",
+      "trap"
+    ],
+    "rationale": "Frontload is already adequate; Havoc and Cinder are unreliable and Thunderclap has no Vulnerable payoffs."
+  },
+  {
+    "id": "S05",
+    "act": 1,
+    "ascension": 3,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dismantle",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.dismantle",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.shrug_it_off",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.headbutt",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.dismantle"
+    ],
+    "acceptable": [],
+    "tags": [
+      "good-duplicate"
+    ],
+    "rationale": "Three Vulnerable sources make a second Dismantle a strong duplicate."
+  },
+  {
+    "id": "S06",
+    "act": 2,
+    "ascension": 4,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.barricade",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.body_slam",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.blood_wall",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.barricade",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.impervious",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.bludgeon",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.impervious"
+    ],
+    "acceptable": [],
+    "tags": [
+      "harmful-duplicate",
+      "false-exhaust-conflict"
+    ],
+    "rationale": "A second Barricade does nothing; Impervious pairs with the existing Barricade."
+  },
+  {
+    "id": "S07",
+    "act": 1,
+    "ascension": 0,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.feel_no_pain",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.vicious",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.pommel_strike",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.pommel_strike"
+    ],
+    "acceptable": [],
+    "tags": [
+      "unsupported-synergy"
+    ],
+    "rationale": "Vicious has one Vulnerable source and Feel No Pain none; Pommel Strike is a clean improvement."
+  },
+  {
+    "id": "S08",
+    "act": 2,
+    "ascension": 6,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.burning_pact",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.second_wind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.forgotten_ritual",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.brand",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.feel_no_pain",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.inflame",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.hemokinesis",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.feel_no_pain"
+    ],
+    "acceptable": [],
+    "tags": [
+      "supported-synergy"
+    ],
+    "rationale": "Four exhaust enablers make Feel No Pain reliable."
+  },
+  {
+    "id": "S09",
+    "act": 1,
+    "ascension": 10,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.feel_no_pain",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.anger",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.dark_embrace",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.true_grit",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.bludgeon",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.bludgeon",
+      "sts2.true_grit"
+    ],
+    "acceptable": [],
+    "tags": [
+      "close-call",
+      "unsupported-synergy",
+      "hoped-for-archetype"
+    ],
+    "rationale": "Close call: Bludgeon spikes frontload, True Grit enables Feel No Pain; Dark Embrace is a second payoff without enablers."
+  },
+  {
+    "id": "S10",
+    "act": 1,
+    "ascension": 9,
+    "floor": null,
+    "hp": 30,
+    "maxHp": 80,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.demon_form",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.flame_barrier",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.inflame",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.rupture",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.flame_barrier"
+    ],
+    "acceptable": [],
+    "tags": [
+      "low-hp",
+      "survival-vs-scaling"
+    ],
+    "rationale": "At 30/80 HP with an elite next, immediate block beats more scaling."
+  },
+  {
+    "id": "S11",
+    "act": 2,
+    "ascension": 5,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dismantle",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.dominate",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.iron_wave",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.headbutt",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.dominate"
+    ],
+    "acceptable": [],
+    "tags": [
+      "supported-synergy",
+      "supported-scaling"
+    ],
+    "rationale": "Four Vulnerable sources make Dominate a reliable Strength source."
+  },
+  {
+    "id": "S12",
+    "act": 2,
+    "ascension": 2,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.blood_wall",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.fight_me",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.unrelenting",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.mangle",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.cinder",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.bloodletting",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.whirlwind",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.perfected_strike",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.bloodletting"
+    ],
+    "acceptable": [],
+    "tags": [
+      "energy-constraint"
+    ],
+    "rationale": "Nine cards cost 2 or more; energy is the bottleneck."
+  },
+  {
+    "id": "S13",
+    "act": 2,
+    "ascension": 3,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.anger",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bully",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.headbutt",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.pyre",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.uppercut",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.bloodletting",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.uppercut"
+    ],
+    "acceptable": [
+      "sts2.pyre"
+    ],
+    "tags": [
+      "energy-counterexample"
+    ],
+    "rationale": "Low-curve deck gains little from extra energy; Uppercut adds Weak and Vulnerable."
+  },
+  {
+    "id": "S14",
+    "act": 3,
+    "ascension": 8,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dominate",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.dismantle",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.impervious",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.unmovable",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.headbutt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.armaments",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.colossus",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.rage",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.infernal_blade",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.hemokinesis",
+        "confidence": 1,
+        "upgraded": true
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.pommel_strike",
+        "confidence": 1,
+        "upgraded": true
+      }
+    ],
+    "preferred": [
+      "sts2.pommel_strike"
+    ],
+    "acceptable": [
+      "skip"
+    ],
+    "tags": [
+      "upgrade-value",
+      "late-skip"
+    ],
+    "rationale": "Upgraded Pommel Strike draws 2 and shortens the cycle; skipping is also reasonable this late."
+  },
+  {
+    "id": "S15",
+    "act": 1,
+    "ascension": 1,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.breakthrough",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.stomp",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.hemokinesis",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.hemokinesis",
+      "sts2.stomp"
+    ],
+    "acceptable": [
+      "sts2.breakthrough"
+    ],
+    "tags": [
+      "close-call",
+      "aoe"
+    ],
+    "rationale": "All three are close; lean single-target frontload."
+  },
+  {
+    "id": "S16",
+    "act": 2,
+    "ascension": 4,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.anger",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.headbutt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dismantle",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.perfected_strike",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.shrug_it_off",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.twin_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.rampage",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.shrug_it_off"
+    ],
+    "acceptable": [],
+    "tags": [
+      "block-density"
+    ],
+    "rationale": "Block density is well below target; Shrug It Off replaces itself."
+  },
+  {
+    "id": "S17",
+    "act": 2,
+    "ascension": 5,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bloodletting",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.breakthrough",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.crimson_mantle",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.blood_wall",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.rupture",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.inflame",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.iron_wave",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.rupture"
+    ],
+    "acceptable": [],
+    "tags": [
+      "supported-synergy",
+      "data-contradicted"
+    ],
+    "rationale": "Four to five HP-loss sources support Rupture; low confidence because unconditional data disagrees."
+  },
+  {
+    "id": "S18",
+    "act": 3,
+    "ascension": 7,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.impervious",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.feel_no_pain",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.dark_embrace",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.burning_pact",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.second_wind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.offering",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.fiend_fire",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ashen_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.forgotten_ritual",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.evil_eye",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dismantle",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.headbutt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bloodletting",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.stomp",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.whirlwind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.juggling",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.one_two_punch",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.hellraiser",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "skip"
+    ],
+    "acceptable": [
+      "sts2.one_two_punch"
+    ],
+    "tags": [
+      "skip",
+      "unsupported-synergy"
+    ],
+    "rationale": "Hellraiser and Juggling lack support in this deck; One-Two Punch has a narrow line."
+  },
+  {
+    "id": "S19",
+    "act": 1,
+    "ascension": 6,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.ascenders_bane",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.offering",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.demon_form",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.barricade",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.offering"
+    ],
+    "acceptable": [],
+    "tags": [
+      "rare-reward"
+    ],
+    "rationale": "Offering is the broadly agreed rare pick; Barricade lacks block support."
+  },
+  {
+    "id": "S20",
+    "act": 2,
+    "ascension": 2,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [
+      "dingy_rug"
+    ],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dismantle",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.shockwave",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.flash_of_steel",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.iron_wave",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.shockwave"
+    ],
+    "acceptable": [],
+    "tags": [
+      "colorless-gating"
+    ],
+    "rationale": "Dingy Rug enables colorless offers; Shockwave's AoE Weak and Vulnerable support Dismantle."
+  }
+]

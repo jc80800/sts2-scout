@@ -19,6 +19,13 @@ public static class Deck
             entries.Sum(e => e.Copies) > 500 || entries.GroupBy(e => (e.EntityId, e.Upgraded)).Any(g => g.Count() > 1))
             throw new InvalidDataException("Deck has unknown cards, duplicate rows, or invalid copy counts");
         if (context.Act is < 1 or > 4 || context.Ascension is < 0 or > 30) throw new InvalidDataException("Invalid act/ascension");
+        ValidateRun(context);
+    }
+    /// <summary>Optional run inputs: unknown (null) is always valid.</summary>
+    public static void ValidateRun(RunContext context)
+    {
+        if (context.MaxHp is < 1 or > 999 || context.Hp is <= 0 || context.Hp > (context.MaxHp ?? 999)) throw new InvalidDataException("HP must be between 1 and max HP");
+        if (context.Floor is < 1 or > 60) throw new InvalidDataException("Floor must be between 1 and 60");
     }
 }
 
@@ -39,6 +46,13 @@ public static class CatalogValidation
                 string.IsNullOrWhiteSpace(c.Source.License) || c.Mechanics.Length == 0 || c.UpgradeChanges.Length == 0)
                 throw new InvalidDataException("Invalid card mechanics/provenance");
         }
+    }
+    /// <summary>OCR candidates for a reward screen: colorless cards only appear when a relic grants colorless rewards (Dingy Rug).</summary>
+    public static Entity[] RewardPool(StrategyPack pack, string character, IEnumerable<string> relics)
+    {
+        var owned = relics.ToHashSet(StringComparer.Ordinal);
+        var colorless = CardRoles.Load().Relics.Any(r => r.Effect == "colorlessRewards" && owned.Contains(r.Id));
+        return Pool(pack, character).Where(e => colorless || e.Card?.Color != "colorless").ToArray();
     }
     public static Entity[] Pool(StrategyPack pack, string character) => pack.Entities.Where(e => e.Kind == EntityKind.Card &&
         e.Card is { MultiplayerOnly: false } card && (card.Color == character || card.Color == "colorless") &&

@@ -42,7 +42,7 @@ try
                 var contextIndex = Array.IndexOf(args, "--context");
                 var context = contextIndex >= 0 ? Json.Read<RunContext>(args[contextIndex + 1]) : new RunContext(pack.GameVersion, [], [], [], [], Character: "ironclad");
                 using var ocr = new TesseractOcr(Path.Combine(AppContext.BaseDirectory, "data", "ocr"));
-                var replay = new RewardRecognizer(calibration, pack, context.Character, ocr).Replay(GrayFrame.ReadPgm(args[3]), DateTimeOffset.UnixEpoch);
+                var replay = new RewardRecognizer(calibration, pack, context.Character, ocr, context.Relics).Replay(GrayFrame.ReadPgm(args[3]), DateTimeOffset.UnixEpoch);
                 var ranked = new RecommendationEngine(pack).Rank(replay.Observation, context);
                 var output = new { replay.Width, replay.Height, replay.FrameHash, replay.Observation, replay.Slots, context.Character, pack.PackVersion, CatalogVersion = pack.Catalog?.Version, CachedAt = pack.Catalog?.RetrievedAt, BlockReason = DeckRanking.BlockReason(pack, replay.Observation, context), Recommendations = ranked };
                 if (!args.Contains("--json")) Console.WriteLine("Offline replay (fixed timestamp for deterministic evaluation; confidence values are scores):");
@@ -88,8 +88,14 @@ try
                 probes.Add(new(args[3], screen, slot, region, (old?.Templates ?? []).Where(t => t.Label != args[6]).Append(template).ToArray()));
                 File.WriteAllText(path, Json.Write(profile with { Version = "local-" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(), Probes = probes.ToArray() })); break;
             }
+        case "evaluate" when args.Length == 3:
+            {
+                var pack = Json.Read<StrategyPack>(args[1]); PackValidation.Validate(pack);
+                var scenarios = ScenarioEvaluation.Load(args[2]);
+                Console.Write(ScenarioEvaluation.Table(scenarios, ScenarioEvaluation.Run(pack, scenarios))); break;
+            }
         default:
-            Console.Error.WriteLine("Scout.Seeder (development only)\nfetch <trusted-manifest-url> <local-app-data-directory> <game-version>\nreward-regions <calibration> [x0 y0 w0 h0 x1 y1 w1 h1 x2 y2 w2 h2]\nrecognize <pack> <calibration> <frame.pgm> [--context run.json] [--json]\nvalidate <pack>\ninstall <pack> <local-app-data-directory> <game-version>\nprepare <sources.json> <allowlisted-url> <prompt.txt>\ningest <catalog.json> <sources.json> <ai-response.json> <output-dir>\ncompile <catalog.json> <output-dir> <review.json> <new-version> <pack-output.json>\ncalibrate <profile.json> <frame.pgm> <screen|entity|price|upgrade|selection> <CardReward|Merchant> <slot> <label> <x> <y> <width> <height> <game-version>");
+            Console.Error.WriteLine("Scout.Seeder (development only)\nfetch <trusted-manifest-url> <local-app-data-directory> <game-version>\nreward-regions <calibration> [x0 y0 w0 h0 x1 y1 w1 h1 x2 y2 w2 h2]\nrecognize <pack> <calibration> <frame.pgm> [--context run.json] [--json]\nvalidate <pack>\nevaluate <pack> <scenarios.json>\ninstall <pack> <local-app-data-directory> <game-version>\nprepare <sources.json> <allowlisted-url> <prompt.txt>\ningest <catalog.json> <sources.json> <ai-response.json> <output-dir>\ncompile <catalog.json> <output-dir> <review.json> <new-version> <pack-output.json>\ncalibrate <profile.json> <frame.pgm> <screen|entity|price|upgrade|selection> <CardReward|Merchant> <slot> <label> <x> <y> <width> <height> <game-version>");
             return 2;
     }
     return 0;

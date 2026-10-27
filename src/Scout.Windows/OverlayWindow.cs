@@ -114,7 +114,7 @@ public sealed class OverlayWindow : Window
         if (profile.RewardNameRegions != null && pack.Catalog != null)
         {
             ocr ??= new TesseractOcr(Path.Combine(AppContext.BaseDirectory, "data", "ocr"));
-            recognizer = new RewardRecognizer(profile, pack, settings.Context.Character, ocr);
+            recognizer = new RewardRecognizer(profile, pack, settings.Context.Character, ocr, settings.Context.Relics);
         }
         else dataStatus = "Select Set up scan to mark the card names for your layout.";
     }
@@ -188,16 +188,16 @@ public sealed class OverlayWindow : Window
     {
         var ranked = engine.Rank(observation, settings.Context);
         status.Text = (corrected ? "Cards entered manually\n" : $"Reward screen • match {observation.Confidence:P0} (screen only)\n") +
-            (observation.Screen == Screen.CardReward ? DeckRanking.BlockReason(pack, observation, settings.Context) ?? "Recommended: " + pack.Entities.Single(e => e.Id == ranked[0].EntityId).Name + (observation.Choices.Single(c => c.Slot == ranked[0].Slot).Upgraded ? "+" : "") : "Merchant heuristic ranking") +
+            (observation.Screen == Screen.CardReward ? DeckRanking.BlockReason(pack, observation, settings.Context) ?? (ranked.Length == 0 ? "No recommendation" : ranked[0].EntityId == RewardChoices.Skip ? "Recommended: Skip" : "Recommended: " + DeckRanking.DisplayName(pack, ranked[0]) + (observation.Choices.SingleOrDefault(c => c.Slot == ranked[0].Slot)?.Upgraded == true ? "+" : "") + (ranked[0].CloseCall ? " (close call)" : "")) : "Merchant heuristic ranking") +
             $"\nCatalog {pack.Catalog?.Version}\nStrategy {pack.PackVersion} • cached {pack.Catalog?.RetrievedAt:yyyy-MM-dd}\n{dataStatus}" + (corrected ? "\nScan paused • Enter cards again or Resume scan for the next reward" : "");
         results.Children.Clear();
         foreach (var choice in observation.Choices.OrderBy(c => c.Slot))
             results.Children.Add(new TextBlock { Text = $"{choice.Slot + 1}. {pack.Entities.SingleOrDefault(e => e.Id == choice.EntityId)?.Name ?? "Unread — use Enter cards or Set up scan"}{(choice.Upgraded ? "+" : "")}", TextWrapping = TextWrapping.Wrap, Foreground = Brushes.Turquoise, Margin = new Thickness(0, 6, 0, 0) });
         foreach (var r in ranked)
         {
-            var title = new TextBlock { Text = $"\n{(r == ranked[0] ? "Recommended" : "Alternative")}: {pack.Entities.Single(e => e.Id == r.EntityId).Name} • {r.Score:0.##}\n" + string.Join("\n", r.Reasons.Where(reason => !reason.Contains("baseline") && !reason.Contains("adding to") && !reason.Contains("Mechanic source")).OrderByDescending(reason => reason.Contains("trigger") || reason.Contains("payoff")).Take(4)), Foreground = Brushes.White, TextWrapping = TextWrapping.Wrap };
+            var title = new TextBlock { Text = $"\n{(r == ranked[0] ? "Recommended" : "Alternative")}: {DeckRanking.DisplayName(pack, r)} • {r.Score:0.##}\n" + string.Join("\n", r.Reasons.Where(reason => !reason.Contains("baseline") && !reason.Contains("adding to") && !reason.Contains("Mechanic source")).OrderByDescending(reason => reason.Contains("trigger") || reason.Contains("payoff")).Take(4)), Foreground = Brushes.White, TextWrapping = TextWrapping.Wrap };
             results.Children.Add(title);
-            results.Children.Add(new Expander { Header = "Why this card?", Foreground = Brushes.LightGray, Content = new TextBlock { Text = string.Join("\n", r.Reasons), TextWrapping = TextWrapping.Wrap } });
+            results.Children.Add(new Expander { Header = r.EntityId == RewardChoices.Skip ? "Why skip?" : "Why this card?", Foreground = Brushes.LightGray, Content = new TextBlock { Text = string.Join("\n", r.Reasons), TextWrapping = TextWrapping.Wrap } });
         }
         if (replay != null) results.Children.Add(new Expander { Header = "Scan details", Foreground = Brushes.LightGray, Content = new TextBox { Text = Json.Write(replay.Slots), IsReadOnly = true, TextWrapping = TextWrapping.Wrap } });
     }

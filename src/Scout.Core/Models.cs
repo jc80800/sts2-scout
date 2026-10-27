@@ -18,8 +18,14 @@ public sealed record Claim(string Id, ClaimKind Kind, string Subject, string? Ot
 public sealed record StrategyPack(int SchemaVersion, string PackVersion, string GameVersion, Entity[] Entities, Claim[] Claims, CatalogInfo? Catalog = null);
 public sealed record Choice(int Slot, string? EntityId, double Confidence, int? Price = null, double PriceConfidence = 0, bool Upgraded = false);
 public sealed record Observation(DateTimeOffset At, Screen Screen, double Confidence, Choice[] Choices, string ProfileVersion, string FrameHash, Selection[]? SelectionSignals = null);
-public sealed record RunContext(string GameVersion, string[] Deck, string[] Relics, string[] Needs, string[] Archetypes, int Act = 1, int Ascension = 0, int Gold = 0, int ReserveGold = 0, string Character = "unconfigured", DeckEntry[]? Cards = null);
-public sealed record Recommendation(int Slot, string EntityId, double Score, string[] Reasons);
+public sealed record RunContext(string GameVersion, string[] Deck, string[] Relics, string[] Needs, string[] Archetypes, int Act = 1, int Ascension = 0, int Gold = 0, int ReserveGold = 0, string Character = "unconfigured", DeckEntry[]? Cards = null, int? Hp = null, int? MaxHp = null, int? Floor = null);
+// CloseCall is omitted from JSON when false, so legacy-path output stays byte-identical.
+public sealed record Recommendation(int Slot, string EntityId, double Score, string[] Reasons, [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool CloseCall = false);
+public static class RewardChoices
+{
+    public const string Skip = "skip";
+    public const int SkipSlot = -1;
+}
 public sealed record Selection(int Slot, string EntityId, double Confidence, string Evidence, bool Confirmed = false);
 
 public static class PackValidation

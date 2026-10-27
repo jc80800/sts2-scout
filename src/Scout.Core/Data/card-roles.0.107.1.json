@@ -1,0 +1,2319 @@
+{
+  "gameVersion": "0.107.1",
+  "cards": [
+    {
+      "id": "sts2.aggression",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "draw": 1
+      },
+      "upgradedPerTurn": {
+        "draw": 1
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Returns and upgrades an Attack from the discard each turn; the upgrade is not modeled. Upgrade adds Innate."
+    },
+    {
+      "id": "sts2.anger",
+      "type": "Attack",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "frontload": 1.0
+      },
+      "upgraded": {
+        "frontload": 1.333
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free single-target hit that also puts a copy in the discard; the extra copies are not modeled."
+    },
+    {
+      "id": "sts2.armaments",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 1.0,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 1.0,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Small block plus an in-hand upgrade (one card, all cards when upgraded); the upgrade value is not modeled."
+    },
+    {
+      "id": "sts2.ashen_strike",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.0,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "frontload": 1.5
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 1.0,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "frontload": 2.0
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Exhaust payoff; full condition assumes three cards already exhausted."
+    },
+    {
+      "id": "sts2.barricade",
+      "type": "Power",
+      "cost": 3,
+      "upgradedCost": 2,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "block": 1.5
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "block": 1.5
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "nonStacking",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Block carries over between turns; only valuable with a strong block base. Extra copies do nothing."
+    },
+    {
+      "id": "sts2.bash",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 1.333,
+        "vulnerableSource": 0.8
+      },
+      "upgraded": {
+        "frontload": 1.667,
+        "vulnerableSource": 1.0
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Starter hit that applies Vulnerable for two turns (three upgraded)."
+    },
+    {
+      "id": "sts2.battle_trance",
+      "type": "Skill",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "draw": 3
+      },
+      "upgraded": {
+        "draw": 4
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "selfLimiting",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free burst draw that blocks further draws this turn."
+    },
+    {
+      "id": "sts2.blood_wall",
+      "type": "Skill",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "block": 3.2,
+        "hpLoss": 2,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 4.0,
+        "hpLoss": 2,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Large block for 2 energy and a little HP."
+    },
+    {
+      "id": "sts2.bloodletting",
+      "type": "Skill",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "energy": 2,
+        "hpLoss": 3
+      },
+      "upgraded": {
+        "energy": 3,
+        "hpLoss": 3
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Trades HP for energy at no cost."
+    },
+    {
+      "id": "sts2.bludgeon",
+      "type": "Attack",
+      "cost": 3,
+      "upgradedCost": 3,
+      "base": {
+        "frontload": 5.333
+      },
+      "upgraded": {
+        "frontload": 7.0
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "One huge single-target hit for 3 energy."
+    },
+    {
+      "id": "sts2.body_slam",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 0,
+      "base": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "frontload": 1.5
+          }
+        }
+      },
+      "upgraded": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "frontload": 1.5
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Damage equals current block; assumes about 9 block when the deck blocks well. Upgrade makes it free."
+    },
+    {
+      "id": "sts2.brand",
+      "type": "Skill",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "scaling": 1,
+        "hpLoss": 1,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "scaling": 2,
+        "hpLoss": 1,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free permanent Strength for 1 HP and a chosen exhaust."
+    },
+    {
+      "id": "sts2.breakthrough",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "aoe": 1.5,
+        "hpLoss": 1
+      },
+      "upgraded": {
+        "aoe": 2.167,
+        "hpLoss": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Cheap hit to every enemy for 1 HP."
+    },
+    {
+      "id": "sts2.bully",
+      "type": "Attack",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "frontload": 0.667,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "frontload": 0.667
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 0.667,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "frontload": 1.0
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free hit that grows with Vulnerable stacks; full condition assumes two stacks."
+    },
+    {
+      "id": "sts2.burning_pact",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "draw": 2,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "draw": 3,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Exhaust a chosen card and draw."
+    },
+    {
+      "id": "sts2.cascade",
+      "type": "Skill",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "draw": 2,
+        "energy": 2
+      },
+      "upgraded": {
+        "draw": 3,
+        "energy": 3
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "X-cost: plays the top X cards for free; X assumed 2. Uncontrolled."
+    },
+    {
+      "id": "sts2.cinder",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 3.0,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "frontload": 4.0,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Big single hit; exhausts a random card from hand, which can be a card you wanted."
+    },
+    {
+      "id": "sts2.colossus",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 1.0,
+        "blockEvents": 1,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "block": 3.0
+          }
+        }
+      },
+      "upgraded": {
+        "block": 1.6,
+        "blockEvents": 1,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "block": 3.0
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Block plus halved damage from Vulnerable enemies this turn."
+    },
+    {
+      "id": "sts2.conflagration",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "aoe": 1.333
+      },
+      "upgraded": {
+        "aoe": 1.667
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [
+        "sts2.demon_form",
+        "sts2.brand"
+      ],
+      "modeled": "full",
+      "notes": "Many small hits to all enemies; strong only with Strength."
+    },
+    {
+      "id": "sts2.crimson_mantle",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "block": 1.6,
+        "hpLoss": 1,
+        "blockEvents": 1
+      },
+      "upgradedPerTurn": {
+        "block": 2.0,
+        "hpLoss": 1,
+        "blockEvents": 1
+      },
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Block every turn for 1 HP each turn."
+    },
+    {
+      "id": "sts2.cruelty",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "frontload": 0.6
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "frontload": 1.2
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Vulnerable enemies take extra damage; estimated as a share of a turn's damage."
+    },
+    {
+      "id": "sts2.dark_embrace",
+      "type": "Power",
+      "cost": 2,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "draw": 1.5
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "draw": 1.5
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Draw a card per exhaust; full condition assumes 1.5 exhausts per turn."
+    },
+    {
+      "id": "sts2.defend_ironclad",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 1.0,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 1.6,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Starter block; the block unit."
+    },
+    {
+      "id": "sts2.demon_form",
+      "type": "Power",
+      "cost": 3,
+      "upgradedCost": 3,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "scaling": 2
+      },
+      "upgradedPerTurn": {
+        "scaling": 3
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Strength every turn starting next turn; slow but strong in long fights."
+    },
+    {
+      "id": "sts2.dismantle",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.333,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "frontload": 1.333
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 1.667,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "frontload": 1.667
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Vulnerable payoff: hits twice against a Vulnerable target."
+    },
+    {
+      "id": "sts2.dominate",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "scaling": 1,
+        "vulnerableSource": 0.5,
+        "exhaustSource": 1,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "scaling": 2
+          }
+        }
+      },
+      "upgraded": {
+        "scaling": 2,
+        "vulnerableSource": 0.7,
+        "exhaustSource": 1,
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "scaling": 2
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Strength per Vulnerable stack on the target; full condition assumes two existing stacks. Exhausts itself."
+    },
+    {
+      "id": "sts2.drum_of_battle",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "draw": 2,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "energy": 2
+          }
+        }
+      },
+      "upgraded": {
+        "draw": 2,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "energy": 3
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Draw now; pays energy if something else exhausts it."
+    },
+    {
+      "id": "sts2.evil_eye",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 1.6,
+        "blockEvents": 1,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "block": 1.6
+          }
+        }
+      },
+      "upgraded": {
+        "block": 2.2,
+        "blockEvents": 1,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "block": 2.2
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Block that doubles if you exhausted a card this turn."
+    },
+    {
+      "id": "sts2.expect_a_fight",
+      "type": "Skill",
+      "cost": 2,
+      "upgradedCost": 1,
+      "base": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "energy": 3
+          }
+        }
+      },
+      "upgraded": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "energy": 3
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Energy per Attack in hand, then no more energy this turn; full condition assumes three Attacks in hand."
+    },
+    {
+      "id": "sts2.feed",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.667,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "frontload": 2.0,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "negative",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Hit that raises max HP on a kill (not modeled); exhausts itself. Upgrading uses a scarce upgrade for little."
+    },
+    {
+      "id": "sts2.feel_no_pain",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "block": 0.9,
+            "blockEvents": 1.5
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "block": 1.2,
+            "blockEvents": 1.5
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Block each time a card is exhausted; full condition assumes 1.5 exhausts per turn."
+    },
+    {
+      "id": "sts2.fiend_fire",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 4.667,
+        "exhaustSource": 4
+      },
+      "upgraded": {
+        "frontload": 6.667,
+        "exhaustSource": 4
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Exhausts the hand for damage per card; assumes four cards. Losing the hand is not modeled."
+    },
+    {
+      "id": "sts2.fight_me",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 1.667,
+        "scaling": 3
+      },
+      "upgraded": {
+        "frontload": 2.0,
+        "scaling": 4
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Two hits and lasting Strength, but the enemy also gains Strength (not modeled)."
+    },
+    {
+      "id": "sts2.flame_barrier",
+      "type": "Skill",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 0.667,
+        "block": 2.4,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "frontload": 1.0,
+        "block": 3.2,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Big block plus retaliation damage; assumes one enemy hit this turn."
+    },
+    {
+      "id": "sts2.forgotten_ritual",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "exhaustSource": 1,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "energy": 3
+          }
+        }
+      },
+      "upgraded": {
+        "exhaustSource": 1,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "energy": 4
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Large energy only if you exhausted a card this turn; exhausts itself."
+    },
+    {
+      "id": "sts2.havoc",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 0,
+      "base": {
+        "draw": 1,
+        "energy": 1,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "draw": 1,
+        "energy": 1,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Plays and exhausts the top card of the draw pile; modeled as a free extra card that is then lost."
+    },
+    {
+      "id": "sts2.headbutt",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.5
+      },
+      "upgraded": {
+        "frontload": 2.0
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Solid hit that puts a discard back on top of the draw pile; the setup of the next draw is not modeled."
+    },
+    {
+      "id": "sts2.hellraiser",
+      "type": "Power",
+      "cost": 2,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "strikeNamed",
+          "effect": {
+            "frontload": 2.0,
+            "energy": 1
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "strikeNamed",
+          "effect": {
+            "frontload": 2.0,
+            "energy": 1
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Auto-plays drawn Strike-named cards; full condition assumes a Strike-heavy deck."
+    },
+    {
+      "id": "sts2.hemokinesis",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 2.5,
+        "hpLoss": 2
+      },
+      "upgraded": {
+        "frontload": 3.333,
+        "hpLoss": 2
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Efficient hit for a little HP."
+    },
+    {
+      "id": "sts2.howl_from_beyond",
+      "type": "Attack",
+      "cost": 3,
+      "upgradedCost": 3,
+      "base": {
+        "aoe": 2.667,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "aoe": 2.667
+          }
+        }
+      },
+      "upgraded": {
+        "aoe": 3.5,
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "aoe": 3.5
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Expensive hit to all enemies; replays itself from the exhaust pile at end of turn."
+    },
+    {
+      "id": "sts2.impervious",
+      "type": "Skill",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "block": 6.0,
+        "exhaustSource": 1,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 8.0,
+        "exhaustSource": 1,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Huge one-time block; exhausts itself."
+    },
+    {
+      "id": "sts2.infernal_blade",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 0,
+      "base": {
+        "frontload": 1.5,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "frontload": 1.5,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Creates a random free Attack; average value assumed. Exhausts itself."
+    },
+    {
+      "id": "sts2.inferno",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "aoe": 1.0,
+        "hpLoss": 1,
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "aoe": 1.0
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "aoe": 1.5,
+        "hpLoss": 1,
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "aoe": 1.5
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Lose 1 HP each turn and damage all enemies on every own-turn HP loss."
+    },
+    {
+      "id": "sts2.inflame",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "scaling": 2
+      },
+      "upgraded": {
+        "scaling": 3
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Immediate permanent Strength."
+    },
+    {
+      "id": "sts2.iron_wave",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 0.833,
+        "block": 1.0,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "frontload": 1.167,
+        "block": 1.4,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Small hit plus small block in one card."
+    },
+    {
+      "id": "sts2.juggernaut",
+      "type": "Power",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "frontload": 2.0
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "frontload": 2.667
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Damage on every block gain; full condition assumes two block gains per turn."
+    },
+    {
+      "id": "sts2.juggling",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 1.0
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 1.0
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Copies the third Attack played each turn; needs many cheap Attacks."
+    },
+    {
+      "id": "sts2.mangle",
+      "type": "Attack",
+      "cost": 3,
+      "upgradedCost": 3,
+      "base": {
+        "frontload": 2.5,
+        "block": 2.0
+      },
+      "upgraded": {
+        "frontload": 3.333,
+        "block": 3.0
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Big hit plus a large temporary Strength cut on the enemy."
+    },
+    {
+      "id": "sts2.molten_fist",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.667,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "frontload": 2.333,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Good hit that exhausts itself and doubles existing Vulnerable; the doubling is not modeled."
+    },
+    {
+      "id": "sts2.not_yet",
+      "type": "Skill",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "block": 2.0
+      },
+      "upgraded": {
+        "block": 2.6
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "One-time heal, counted as block; exhausts itself."
+    },
+    {
+      "id": "sts2.offering",
+      "type": "Skill",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "draw": 3,
+        "energy": 2,
+        "hpLoss": 6,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "draw": 5,
+        "energy": 2,
+        "hpLoss": 6,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free energy and draw for HP; exhausts itself."
+    },
+    {
+      "id": "sts2.one_two_punch",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 1.5
+          }
+        }
+      },
+      "upgraded": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 3.0
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Replays the next Attack (two when upgraded); value depends on that Attack."
+    },
+    {
+      "id": "sts2.pacts_end",
+      "type": "Attack",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "aoe": 2.833
+          }
+        }
+      },
+      "upgraded": {
+        "conditional": {
+          "kind": "exhaust",
+          "effect": {
+            "aoe": 3.833
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free hit to all enemies once three cards are exhausted."
+    },
+    {
+      "id": "sts2.perfected_strike",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 1.333,
+        "conditional": {
+          "kind": "strikeNamed",
+          "effect": {
+            "frontload": 1.667
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 1.5,
+        "conditional": {
+          "kind": "strikeNamed",
+          "effect": {
+            "frontload": 2.5
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Grows with Strike-named cards; base counts only itself, full condition assumes six."
+    },
+    {
+      "id": "sts2.pillage",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.0,
+        "draw": 1,
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "draw": 1
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 1.5,
+        "draw": 1,
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "draw": 1
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Hit that keeps drawing through Attacks until a non-Attack."
+    },
+    {
+      "id": "sts2.pommel_strike",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.5,
+        "draw": 1
+      },
+      "upgraded": {
+        "frontload": 1.667,
+        "draw": 2
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Hit that replaces itself; the upgrade draws an extra card."
+    },
+    {
+      "id": "sts2.primal_force",
+      "type": "Skill",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 3.0
+          }
+        }
+      },
+      "upgraded": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 4.333
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Turns Attacks in hand into heavy rocks; full condition assumes two Attacks in hand."
+    },
+    {
+      "id": "sts2.pyre",
+      "type": "Power",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "energy": 1
+      },
+      "upgradedPerTurn": {
+        "energy": 2
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "uncertain",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Extra energy every turn from next turn; stacking unverified."
+    },
+    {
+      "id": "sts2.rage",
+      "type": "Skill",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "block": 1.2,
+            "blockEvents": 2
+          }
+        }
+      },
+      "upgraded": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "block": 2.0,
+            "blockEvents": 2
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free block per Attack played this turn; full condition assumes two Attacks."
+    },
+    {
+      "id": "sts2.rampage",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.5,
+        "scaling": 0.8
+      },
+      "upgraded": {
+        "frontload": 1.5,
+        "scaling": 1.4
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Hit that grows each time it is played this combat."
+    },
+    {
+      "id": "sts2.rupture",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "scaling": 1
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "scaling": 2
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Strength whenever you lose HP on your turn; full condition assumes one loss per turn."
+    },
+    {
+      "id": "sts2.second_wind",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 2.0,
+        "exhaustSource": 2,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 2.8,
+        "exhaustSource": 2,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Exhausts non-Attacks in hand for block each; assumes two."
+    },
+    {
+      "id": "sts2.setup_strike",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 2.167
+      },
+      "upgraded": {
+        "frontload": 3.0
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Hit plus Strength for this turn only, counted as extra frontload (0.5 per point)."
+    },
+    {
+      "id": "sts2.shrug_it_off",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 1.6,
+        "draw": 1,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 2.2,
+        "draw": 1,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Block that replaces itself."
+    },
+    {
+      "id": "sts2.spite",
+      "type": "Attack",
+      "cost": 0,
+      "upgradedCost": 0,
+      "base": {
+        "frontload": 0.833,
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "frontload": 0.833
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 0.833,
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "frontload": 1.667
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Free hit that repeats if you lost HP this turn."
+    },
+    {
+      "id": "sts2.stampede",
+      "type": "Power",
+      "cost": 2,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 1.2
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "frontload": 1.2
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Auto-plays a random Attack left in hand at end of turn."
+    },
+    {
+      "id": "sts2.stoke",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "exhaustSource": 4
+      },
+      "upgraded": {
+        "exhaustSource": 4
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Replaces the hand with random cards (upgraded when upgraded); assumes four cards."
+    },
+    {
+      "id": "sts2.stomp",
+      "type": "Attack",
+      "cost": 3,
+      "upgradedCost": 3,
+      "base": {
+        "aoe": 2.0,
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "energy": 2
+          }
+        }
+      },
+      "upgraded": {
+        "aoe": 2.5,
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "energy": 2
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Hit to all enemies that gets cheaper per Attack played first; full condition assumes two."
+    },
+    {
+      "id": "sts2.stone_armor",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "block": 0.6,
+        "blockEvents": 1
+      },
+      "upgradedPerTurn": {
+        "block": 0.9,
+        "blockEvents": 1
+      },
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Plating that gives block each turn and wears down when hit; averaged."
+    },
+    {
+      "id": "sts2.strike_ironclad",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.0
+      },
+      "upgraded": {
+        "frontload": 1.5
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Starter single-target hit; the damage unit."
+    },
+    {
+      "id": "sts2.sword_boomerang",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.5
+      },
+      "upgraded": {
+        "frontload": 2.0
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Several small hits on random enemies; counted as single-target damage."
+    },
+    {
+      "id": "sts2.taunt",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 1.4,
+        "vulnerableSource": 0.6,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 1.6,
+        "vulnerableSource": 0.8,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Block plus Vulnerable in one card."
+    },
+    {
+      "id": "sts2.tear_asunder",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 0.833,
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "frontload": 2.5
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 1.167,
+        "conditional": {
+          "kind": "hpLoss",
+          "effect": {
+            "frontload": 3.5
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Extra hit per HP loss this combat; full condition assumes three losses."
+    },
+    {
+      "id": "sts2.thrash",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 2.333,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "frontload": 3.0,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "partial",
+      "notes": "Two hits that absorb a random Attack from hand; assumes one is present and lost."
+    },
+    {
+      "id": "sts2.thunderclap",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "aoe": 0.667,
+        "vulnerableSource": 0.6
+      },
+      "upgraded": {
+        "aoe": 1.167,
+        "vulnerableSource": 0.6
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Light damage and 1 Vulnerable to every enemy."
+    },
+    {
+      "id": "sts2.tremble",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "vulnerableSource": 1.0,
+        "exhaustSource": 1
+      },
+      "upgraded": {
+        "vulnerableSource": 1.2,
+        "exhaustSource": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": true,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Pure long Vulnerable setup; exhausts itself."
+    },
+    {
+      "id": "sts2.true_grit",
+      "type": "Skill",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "block": 1.4,
+        "exhaustSource": 1,
+        "blockEvents": 1
+      },
+      "upgraded": {
+        "block": 1.8,
+        "exhaustSource": 1,
+        "blockEvents": 1
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Block plus an exhaust (random; chosen when upgraded)."
+    },
+    {
+      "id": "sts2.twin_strike",
+      "type": "Attack",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {
+        "frontload": 1.667
+      },
+      "upgraded": {
+        "frontload": 2.333
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Two hits; good with Strength."
+    },
+    {
+      "id": "sts2.unmovable",
+      "type": "Power",
+      "cost": 2,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "block": 1.4
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "block",
+          "effect": {
+            "block": 1.4
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Doubles the first card block each turn."
+    },
+    {
+      "id": "sts2.unrelenting",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 2.333,
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "energy": 1
+          }
+        }
+      },
+      "upgraded": {
+        "frontload": 3.333,
+        "conditional": {
+          "kind": "attacks",
+          "effect": {
+            "energy": 1
+          }
+        }
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "normal",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Big hit that makes the next Attack free."
+    },
+    {
+      "id": "sts2.uppercut",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "frontload": 2.167,
+        "block": 0.6,
+        "vulnerableSource": 0.6
+      },
+      "upgraded": {
+        "frontload": 2.167,
+        "block": 1.2,
+        "vulnerableSource": 0.8
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Hit plus Weak and Vulnerable; the upgrade doubles both debuffs."
+    },
+    {
+      "id": "sts2.vicious",
+      "type": "Power",
+      "cost": 1,
+      "upgradedCost": 1,
+      "base": {},
+      "upgraded": {},
+      "perTurn": {
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "draw": 1
+          }
+        }
+      },
+      "upgradedPerTurn": {
+        "conditional": {
+          "kind": "vulnerable",
+          "effect": {
+            "draw": 2
+          }
+        }
+      },
+      "selfExhaust": false,
+      "setupTurns": 1,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "Draws when you apply Vulnerable; full condition assumes one application per turn."
+    },
+    {
+      "id": "sts2.whirlwind",
+      "type": "Attack",
+      "cost": 2,
+      "upgradedCost": 2,
+      "base": {
+        "aoe": 1.667
+      },
+      "upgraded": {
+        "aoe": 2.667
+      },
+      "perTurn": null,
+      "upgradedPerTurn": null,
+      "selfExhaust": false,
+      "setupTurns": 0,
+      "copyBehavior": "stackable",
+      "upgradeClass": "large",
+      "rareDependency": [],
+      "modeled": "full",
+      "notes": "X-cost hits to all enemies; X assumed 2."
+    }
+  ],
+  "relics": [
+    {
+      "id": "dingy_rug",
+      "name": "Dingy Rug",
+      "effect": "colorlessRewards",
+      "value": 1
+    },
+    {
+      "id": "bag_of_marbles",
+      "name": "Bag of Marbles",
+      "effect": "vulnerableSource",
+      "value": 0.6
+    },
+    {
+      "id": "paper_phrog",
+      "name": "Paper Phrog",
+      "effect": "vulnerablePayoff",
+      "value": 1.17
+    },
+    {
+      "id": "self_forming_clay",
+      "name": "Self-Forming Clay",
+      "effect": "hpLossRelief",
+      "value": 0.6
+    },
+    {
+      "id": "demon_tongue",
+      "name": "Demon Tongue",
+      "effect": "hpLossRelief",
+      "value": 1.0
+    },
+    {
+      "id": "strike_dummy",
+      "name": "Strike Dummy",
+      "effect": "strikeBonus",
+      "value": 0.5
+    },
+    {
+      "id": "charons_ashes",
+      "name": "Charon's Ashes",
+      "effect": "exhaustPayoff",
+      "value": 0.5
+    },
+    {
+      "id": "red_skull",
+      "name": "Red Skull",
+      "effect": "scaling",
+      "value": 1.5
+    },
+    {
+      "id": "vajra",
+      "name": "Vajra",
+      "effect": "scaling",
+      "value": 1
+    },
+    {
+      "id": "ruined_helmet",
+      "name": "Ruined Helmet",
+      "effect": "strengthDouble",
+      "value": 1
+    },
+    {
+      "id": "gorget",
+      "name": "Gorget",
+      "effect": "blockPerTurn",
+      "value": 0.8
+    },
+    {
+      "id": "pen_nib",
+      "name": "Pen Nib",
+      "effect": "bigAttack",
+      "value": 1
+    },
+    {
+      "id": "toasty_mittens",
+      "name": "Toasty Mittens",
+      "effect": "exhaustSource",
+      "value": 1
+    },
+    {
+      "id": "toasty_mittens",
+      "name": "Toasty Mittens",
+      "effect": "scaling",
+      "value": 1
+    },
+    {
+      "id": "brimstone",
+      "name": "Brimstone",
+      "effect": "scaling",
+      "value": 2
+    }
+  ]
+}

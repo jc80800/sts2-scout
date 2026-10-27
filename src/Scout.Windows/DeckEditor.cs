@@ -30,6 +30,21 @@ public sealed class DeckEditor : Window
             Grid.SetColumn(field, column); fields.Children.Add(field);
         }
         Field(0, "Character", character); Field(1, $"Game version ({pack.GameVersion})", version); Field(2, "Act (1–4)", act); Field(3, "Ascension", ascension);
+        // Optional run details: blank means unknown, and advice then ignores that input.
+        var hp = new TextBox { Text = context.Hp?.ToString() ?? "" }; var maxHp = new TextBox { Text = context.MaxHp?.ToString() ?? "" }; var floor = new TextBox { Text = context.Floor?.ToString() ?? "" };
+        var run = new Grid { Margin = new Thickness(0, 0, 0, 12) }; header.Children.Add(run);
+        foreach (var _ in Enumerable.Range(0, 3)) run.ColumnDefinitions.Add(new ColumnDefinition());
+        foreach (var (column, label, box) in new[] { (0, "HP (optional)", hp), (1, "Max HP (optional)", maxHp), (2, "Floor 1–60 (optional)", floor) })
+        {
+            var field = new StackPanel { Margin = new Thickness(0, 0, column == 2 ? 0 : 12, 0) };
+            field.Children.Add(new TextBlock { Text = label, Margin = new Thickness(0, 0, 0, 4) }); field.Children.Add(box);
+            Grid.SetColumn(field, column); run.Children.Add(field);
+        }
+        header.Children.Add(new TextBlock { Text = "Relics that change card advice", Margin = new Thickness(0, 0, 0, 4) });
+        var relicPanel = new WrapPanel { Margin = new Thickness(0, 0, 0, 16) }; header.Children.Add(relicPanel);
+        var relicBoxes = CardRoles.Load().Relics.GroupBy(r => r.Id).Select(g => new CheckBox { Content = g.First().Name, Tag = g.Key, IsChecked = context.Relics.Contains(g.Key), Margin = new Thickness(0, 0, 12, 4) }).ToArray();
+        foreach (var box in relicBoxes) relicPanel.Children.Add(box);
+        static int? Optional(TextBox box, string name) => string.IsNullOrWhiteSpace(box.Text) ? null : int.TryParse(box.Text.Trim(), out var value) ? value : throw new InvalidDataException($"{name} must be a whole number or blank");
         var footer = new StackPanel { Margin = new Thickness(0, 12, 0, 0) }; DockPanel.SetDock(footer, Dock.Bottom); root.Children.Add(footer);
         var message = new TextBlock { TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 4) }; footer.Children.Add(message);
         var columns = new Grid(); columns.ColumnDefinitions.Add(new ColumnDefinition()); columns.ColumnDefinitions.Add(new ColumnDefinition()); root.Children.Add(columns);
@@ -67,7 +82,19 @@ public sealed class DeckEditor : Window
         Button(deckActions, "Clear deck", () => { entries.Clear(); Refresh(); message.Text = "Deck cleared. Add your new run's cards, then Save deck."; });
         Button(footer, "Save deck", () =>
         {
-            var candidate = context with { Character = character.SelectedItem as string ?? "unconfigured", GameVersion = GameVersions.Normalize(version.Text), Act = int.Parse(act.Text), Ascension = int.Parse(ascension.Text), Cards = entries.ToArray(), Deck = entries.SelectMany(e => Enumerable.Repeat(e.EntityId, e.Copies)).ToArray() };
+            var candidate = context with
+            {
+                Character = character.SelectedItem as string ?? "unconfigured",
+                GameVersion = GameVersions.Normalize(version.Text),
+                Act = int.Parse(act.Text),
+                Ascension = int.Parse(ascension.Text),
+                Cards = entries.ToArray(),
+                Hp = Optional(hp, "HP"),
+                MaxHp = Optional(maxHp, "Max HP"),
+                Floor = Optional(floor, "Floor"),
+                Relics = context.Relics.Where(id => !relicBoxes.Any(b => (string)b.Tag == id)).Concat(relicBoxes.Where(b => b.IsChecked == true).Select(b => (string)b.Tag)).ToArray(),
+                Deck = entries.SelectMany(e => Enumerable.Repeat(e.EntityId, e.Copies)).ToArray()
+            };
             Deck.Validate(candidate, pack);
             if (candidate.Character == "unconfigured" || candidate.Ascension > 10) throw new InvalidDataException("Select character and ascension 0–10");
             if (candidate.GameVersion != pack.GameVersion) throw new InvalidDataException($"This catalog supports {pack.GameVersion}. Your actual game version must match before advice is available.");

@@ -1,3 +1,5 @@
 All fixtures are original synthetic data licensed under this repository's AGPL-3.0 license. Names are deliberately unrelated to STS2 entities. PGM images are geometric patterns, not game assets. reward/merchant are calibration fixtures; their noisy variants are small synthetic perturbations, not independent real-world validation. unknown is a blank negative. Coverage: two synthetic screens, one aspect ratio, exact and perturbed patterns. No real game versions, localizations, hover states, transitions or accessibility configurations covered.
 
 `ocr-plain.pgm` and `ocr-outlined.pgm` are original synthetic text/ribbon fixtures rendered by `scripts/generate_ocr_fixtures.py` with system Arial, with no game pixels. They exercise the actual native English OCR model, three slots, upgrade reading and reward detector. Card names identify catalog facts; fixtures do not establish accuracy on every game font or layout.
+
+`settings-before-hp.json` is a synthetic settings file in the format used before HP, max HP and floor were added; it checks that older settings still load.

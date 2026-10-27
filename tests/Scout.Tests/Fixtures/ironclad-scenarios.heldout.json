@@ -1,0 +1,2428 @@
+[
+  {
+    "id": "H01",
+    "act": 1,
+    "ascension": 6,
+    "floor": 2,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ascenders_bane",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.hemokinesis",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.dark_embrace",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.juggernaut",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.hemokinesis"
+    ],
+    "acceptable": [],
+    "tags": [
+      "unsupported-synergy",
+      "frontload",
+      "rare-offer"
+    ],
+    "rationale": "Floor 2: early Act 1 wants frontload first (§2.1 Jorbs jobs; R2 Act 1 rewards 1-3 row; V3 'floor one skip is almost always wrong'). Hemokinesis is 15 damage for 1 energy and a bridge card (§10.1 V4). Dark Embrace has 0 exhaust enablers (P2/R4 need 3-4) and is 'a bit slow' (§2.3 Jorbs; Untapped Act 1 -10%). Juggernaut has no block-event engine and is rated low by most (§10.2)."
+  },
+  {
+    "id": "H02",
+    "act": 1,
+    "ascension": 0,
+    "floor": 1,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.sword_boomerang",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.vicious",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.armaments",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.sword_boomerang"
+    ],
+    "acceptable": [
+      "sts2.armaments"
+    ],
+    "tags": [
+      "unsupported-synergy",
+      "frontload"
+    ],
+    "rationale": "Floor 1 starter deck: frontload damage is the top need (§2.1, R2). Vicious has only an unupgraded Bash as Vulnerable source (needs 2-3, §2.2 P2) and Act 1 data is negative (GoP -5.4%, Untapped -10%); Jorbs cautions against it in Act 1. Armaments (block + upgrade) is defensible but adds no frontload; acceptable, not preferred."
+  },
+  {
+    "id": "H03",
+    "act": 1,
+    "ascension": 4,
+    "floor": 5,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.anger",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.rupture",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.spite",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.uppercut",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.uppercut"
+    ],
+    "acceptable": [],
+    "tags": [
+      "unsupported-synergy"
+    ],
+    "rationale": "Deck has zero HP-loss-on-your-turn sources, so Rupture and Spite's conditional halves are dead (R4 self-damage reliability; §10.1 V4 lists Rupture as a payoff that needs setup). Uppercut is top tier across experts and is Ironclad's only Weak source (P6, §10.2) and adds a second Vulnerable source."
+  },
+  {
+    "id": "H04",
+    "act": 2,
+    "ascension": 6,
+    "floor": 21,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.inflame",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.pacts_end",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.ashen_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.taunt",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.taunt"
+    ],
+    "acceptable": [
+      "skip"
+    ],
+    "tags": [
+      "unsupported-synergy"
+    ],
+    "rationale": "No exhaust enablers in the deck: Pact's End needs 3+ cards in the Exhaust Pile [M] and never fires; Ashen Strike is a plain 6-damage Strike without exhausts (R4, P2). Taunt gives block plus a Vulnerable source for Uppercut/Bash value (P5) and job-mixing beats stacking (V9 2 Twin + 2 Taunt). Act 2 raises the skip bar (R1), so Skip is acceptable."
+  },
+  {
+    "id": "H05",
+    "act": 1,
+    "ascension": 7,
+    "floor": 7,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.headbutt",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.cruelty",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.molten_fist",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.shrug_it_off",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.molten_fist",
+      "sts2.shrug_it_off"
+    ],
+    "acceptable": [],
+    "tags": [
+      "close-call",
+      "unsupported-synergy"
+    ],
+    "rationale": "Cruelty needs reliable Vulnerable; only Bash exists (P5 'payoffs without sources are dead'; Frost Prime 'dead draw', §10.2). Molten Fist is unconditional 10-for-1 frontload and a Vulnerable bridge card (V4), while Shrug It Off is block with draw that is 'hard to have too many' (V7) at A7 where Act 1 block matters (P1). Later Act 1 weights frontload 0.8 vs block 0.7 (R2) - genuine close call."
+  },
+  {
+    "id": "H06",
+    "act": 3,
+    "ascension": 8,
+    "floor": 42,
+    "hp": null,
+    "maxHp": null,
+    "relics": [
+      "vajra"
+    ],
+    "deck": [
+      {
+        "entityId": "sts2.inflame",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.fight_me",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dominate",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.sword_boomerang",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.whirlwind",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.impervious",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.offering",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bloodletting",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ascenders_bane",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.breakthrough",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.headbutt",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.armaments",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "skip"
+    ],
+    "acceptable": [],
+    "tags": [
+      "skip",
+      "late-run"
+    ],
+    "rationale": "Act 3, 25-card working Strength deck with scaling, block, draw and energy covered. Act 3 wants acceleration/consistency and most of the pool is dead weight (V3); frontload commons fade after Act 1 (P12, Breakthrough strongly negative later); 56/80 cards have negative Act 3 deltas (§0.6). V2 three-question test fails for all three. R1 Act 3 threshold +1.0."
+  },
+  {
+    "id": "H07",
+    "act": 2,
+    "ascension": 9,
+    "floor": 24,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.feel_no_pain",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.dark_embrace",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.burning_pact",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.second_wind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.evil_eye",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ashen_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 3,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.sword_boomerang",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.setup_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.anger",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "skip"
+    ],
+    "acceptable": [],
+    "tags": [
+      "skip"
+    ],
+    "rationale": "Functioning Act 2 exhaust engine. Act 2 frontload commons are usually skipped (V3); Anger is strongly negative after Act 1 (P12: Act 2 pick rate 6%, -8%); Setup Strike is consensus poor (§10.2); Sword Boomerang only scales with Strength, which this deck lacks (P12 exception). Each adds dilution to engine redraws (R7)."
+  },
+  {
+    "id": "H08",
+    "act": 1,
+    "ascension": 5,
+    "floor": 13,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.havoc",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.setup_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.body_slam",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "skip"
+    ],
+    "acceptable": [],
+    "tags": [
+      "skip",
+      "traps"
+    ],
+    "rationale": "Late Act 1 (floor 13), frontload already above the 2-3 card target (Jorbs, §2.1) and block density 6/17. All offers are consensus-poor: Havoc 'bad floor 1 pick'/F (P11), Setup Strike consensus poor (§10.2), Body Slam Untapped Act 1 -10% (§2.1) with no Barricade/Juggernaut support. Skip rate rises to 16-22% by later Act 1 rewards (§0.6); R1 Act 1-later threshold 0."
+  },
+  {
+    "id": "H09",
+    "act": 3,
+    "ascension": 3,
+    "floor": 45,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.demon_form",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.inflame",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.unmovable",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.impervious",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.stone_armor",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.colossus",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ascenders_bane",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.stampede",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.rage",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.expect_a_fight",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "skip"
+    ],
+    "acceptable": [],
+    "tags": [
+      "skip",
+      "unsupported-synergy"
+    ],
+    "rationale": "Act 3, 25 cards with only 8 attacks (~1.6 attacks/turn). Stampede, Rage and Expect a Fight all pay off attacks in hand/played (R4 'attacks per turn' reliability is low). Stable Expect a Fight locks further energy (§1.2; do not use beta notes). No job gap these fill; Act 3 skip threshold highest (R1, V3)."
+  },
+  {
+    "id": "H10",
+    "act": 2,
+    "ascension": 3,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.inflame",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.sword_boomerang",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.shrug_it_off",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.infernal_blade",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.spite",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.shrug_it_off"
+    ],
+    "acceptable": [],
+    "tags": [
+      "good-duplicate",
+      "block-density"
+    ],
+    "rationale": "Second Shrug It Off: Shrug is 'hard to have too many' (V7) and draws, so no cycle cost (S16 logic in §6, R7). Block density 5/18 = 28% is below the ~33% target (P9, R8). Infernal Blade's random attack is unreliable and wants an upgrade (P10, §6 S14). Spite has one HP-loss source (Hemokinesis) so its condition is unreliable (R4)."
+  },
+  {
+    "id": "H11",
+    "act": 1,
+    "ascension": 1,
+    "floor": 6,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.pommel_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.cinder",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.stone_armor",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.pommel_strike"
+    ],
+    "acceptable": [],
+    "tags": [
+      "good-duplicate",
+      "traps"
+    ],
+    "rationale": "Pommel Strike #2: duplicates are card-specific and Pommel is hard to have too many of (V7; R6 stackable). Cheap frontload + cycle in early Act 1 (R2). Cinder randomly exhausts (P11 trap: Nat1 D, Spire Codex 'trap'). Stone Armor is a setup power with lower early impact (R10)."
+  },
+  {
+    "id": "H12",
+    "act": 2,
+    "ascension": 7,
+    "floor": 23,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.feel_no_pain",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.burning_pact",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.second_wind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.evil_eye",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ashen_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.feel_no_pain",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.thunderclap",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.rampage",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.feel_no_pain"
+    ],
+    "acceptable": [],
+    "tags": [
+      "good-duplicate",
+      "supported-synergy"
+    ],
+    "rationale": "Exhaust enablers: True Grit x2, Burning Pact, Second Wind (~5 exhaust units) exceed the '3 or 4 sources' threshold (P2, R4). Jorbs: 'A Feel No Pain or two' (R6 copyPayoff, stackable). FNP turns positive in Act 2-3 (§2.1 timing flip, §2.3). Thunderclap and Rampage are frontload commons that Act 2 often skips (V3)."
+  },
+  {
+    "id": "H13",
+    "act": 2,
+    "ascension": 5,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.battle_trance",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.taunt",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.colossus",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.taunt"
+    ],
+    "acceptable": [
+      "sts2.colossus"
+    ],
+    "tags": [
+      "harmful-duplicate"
+    ],
+    "rationale": "Third Battle Trance: first copy S, second B, third risky because it shuts off draw (V7; R6 selfLimiting; P3 anti-synergy with a second copy). Block density 5/18 is low (P9, R8); Taunt adds block plus Vulnerable (P5). Colossus is top-tier block (§10.2) but has fewer Vulnerable sources to lean on here, so acceptable."
+  },
+  {
+    "id": "H14",
+    "act": 3,
+    "ascension": 2,
+    "floor": 38,
+    "hp": null,
+    "maxHp": null,
+    "relics": [
+      "gorget"
+    ],
+    "deck": [
+      {
+        "entityId": "sts2.barricade",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.juggernaut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.body_slam",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.unmovable",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.impervious",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.colossus",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.iron_wave",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.barricade",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.stone_armor",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.pillage",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.stone_armor"
+    ],
+    "acceptable": [
+      "skip"
+    ],
+    "tags": [
+      "harmful-duplicate",
+      "supported-synergy"
+    ],
+    "rationale": "Barricade #2 does nothing [M] (R6 nonStacking; V7). Stone Armor gives Plating each turn: a block event for Juggernaut and retained block with Barricade; a second copy/upgrade 'worth more than double' (V7). Pillage draws until a non-Attack, weak in a block-heavy deck. Act 3 skip threshold high (R1), so Skip acceptable."
+  },
+  {
+    "id": "H15",
+    "act": 1,
+    "ascension": 10,
+    "floor": 9,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ascenders_bane",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.cinder",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.fight_me",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.bludgeon",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.anger",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.shrug_it_off",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.shrug_it_off"
+    ],
+    "acceptable": [
+      "sts2.anger"
+    ],
+    "tags": [
+      "harmful-duplicate",
+      "energy-curve"
+    ],
+    "rationale": "Already 5 cards costing 2+ (Bash 2, Bludgeon 3, Cinder 2, Uppercut 2, Fight Me! 2); Bludgeon #2 pushes demand past 3 energy (R9 shortfall penalty; P4 energy scarce). At A10 Act 1 is the attrition problem (P1: ~40% of A9 runs leave Act 1) and frontload is already strong, so block wins. Anger (0-cost frontload) is acceptable."
+  },
+  {
+    "id": "H16",
+    "act": 2,
+    "ascension": 8,
+    "floor": 27,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dismantle",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bully",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.tremble",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.colossus",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.cruelty",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.colossus",
+      "sts2.cruelty"
+    ],
+    "acceptable": [],
+    "tags": [
+      "harmful-duplicate",
+      "supported-synergy",
+      "close-call"
+    ],
+    "rationale": "Vulnerable uptime is already saturated (~4.8 source units); a third Tremble has small marginal value (V5 diminishing returns after the first 2-3 sources). Colossus (top tier, §10.2) halves damage from Vulnerable enemies - strongly enabled here. Cruelty is S for Baalorlord/vmService but a 'dead draw' per Frost Prime (§10.2), and the deck has no other scaling. Experts split -> close call."
+  },
+  {
+    "id": "H17",
+    "act": 2,
+    "ascension": 1,
+    "floor": null,
+    "hp": null,
+    "maxHp": null,
+    "relics": [
+      "charons_ashes"
+    ],
+    "deck": [
+      {
+        "entityId": "sts2.feel_no_pain",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.dark_embrace",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.burning_pact",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.true_grit",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.second_wind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.ashen_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.pillage",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.sword_boomerang",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.ashen_strike"
+    ],
+    "acceptable": [],
+    "tags": [
+      "supported-synergy",
+      "relic"
+    ],
+    "rationale": "Exhaust enablers (Burning Pact, True Grit+, Second Wind) meet R4 thresholds and Charon's Ashes is an exhaust payoff relic (N3). Ashen Strike is a payoff that is 'fine on its own' (V4) and scales with the Exhaust Pile. Pillage and Sword Boomerang are Act 2 frontload commons that are usually skipped (V3); no Strength for Sword Boomerang (P12)."
+  },
+  {
+    "id": "H18",
+    "act": 1,
+    "ascension": 6,
+    "floor": 10,
+    "hp": null,
+    "maxHp": null,
+    "relics": [
+      "bag_of_marbles"
+    ],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.dominate",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.perfected_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.spite",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.dominate"
+    ],
+    "acceptable": [],
+    "tags": [
+      "supported-synergy",
+      "relic"
+    ],
+    "rationale": "Vulnerable sources: Bash+ (1.0), Tremble (1.0), Thunderclap (0.6) plus Bag of Marbles (0.6) - reliability ~1 (R4, N3). Dominate: near auto-pick, S across experts (§10.2), 'payoff fine on its own' (V4). Perfected Strike is a 2-cost common with only 7 Strike-named cards; Spite has no HP-loss sources (R4)."
+  },
+  {
+    "id": "H19",
+    "act": 1,
+    "ascension": 8,
+    "floor": 14,
+    "hp": 22,
+    "maxHp": 80,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.hemokinesis",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.shrug_it_off",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.inflame",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.bloodletting",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.shrug_it_off"
+    ],
+    "acceptable": [],
+    "tags": [
+      "low-hp"
+    ],
+    "rationale": "HP 22/80 (27%) late Act 1: N1 raises block need x1.5 and discounts setup; self-damage costs more. Shrug It Off is immediate block with draw (V7). Inflame is scaling with lower Act 1 weight (R2/R10); Bloodletting costs 3 HP and the curve has only Bludgeon/Bash as sinks (R9)."
+  },
+  {
+    "id": "H20",
+    "act": 2,
+    "ascension": 5,
+    "floor": 26,
+    "hp": 24,
+    "maxHp": 82,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.inflame",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.offering",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.impervious",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.pillage",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.offering",
+      "sts2.impervious"
+    ],
+    "acceptable": [],
+    "tags": [
+      "low-hp",
+      "close-call"
+    ],
+    "rationale": "Offering is the broad-consensus strongest pick (P7, §10.2) but costs 6 HP and is weaker at very low HP (P7 hypothesis, N1). At 24/82 (29%) Impervious's 30 Block is immediate survival (N1 block x1.5; Impervious top tier §10.2). Expert consensus vs HP-aware rule conflict -> close call. Pillage is a weak common here."
+  },
+  {
+    "id": "H21",
+    "act": 3,
+    "ascension": 4,
+    "floor": 44,
+    "hp": 20,
+    "maxHp": 88,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.inflame",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.fight_me",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.sword_boomerang",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.whirlwind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.crimson_mantle",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.rupture",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.feed",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.crimson_mantle"
+    ],
+    "acceptable": [],
+    "tags": [
+      "low-hp",
+      "unsupported-synergy"
+    ],
+    "rationale": "HP 20/88 in Act 3. Crimson Mantle gives 8 Block every turn for 1 HP and is top tier (P8, §10.2; GoP +5.7%). Rupture has no HP-loss sources in deck (R4; V4 needs setup) - Crimson Mantle would be the only one and that timing is unverified (§8). Feed is 'win more' (V12)."
+  },
+  {
+    "id": "H22",
+    "act": 2,
+    "ascension": 6,
+    "floor": 22,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.whirlwind",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.flame_barrier",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.blood_wall",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.impervious",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.fight_me",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.cinder",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.howl_from_beyond",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 3,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.pyre",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.unrelenting",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.hemokinesis",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.pyre"
+    ],
+    "acceptable": [
+      "sts2.hemokinesis"
+    ],
+    "tags": [
+      "energy-curve"
+    ],
+    "rationale": "10 of 18 cards cost 2+ (Whirlwind X): energy is the bottleneck (R9; P4 Baalorlord on Ironclad energy scarcity; analogous to dev S12 but different card). Pyre +1 energy/turn; Jorbs says valuable but 'quite slow' (P4), so Act 2 setup factor 0.9 applies. Unrelenting is another 2-cost card; Hemokinesis is cheap frontload that lowers average cost, acceptable."
+  },
+  {
+    "id": "H23",
+    "act": 2,
+    "ascension": 0,
+    "floor": 20,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.anger",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.battle_trance",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.spite",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bully",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 2,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": true
+      },
+      {
+        "entityId": "sts2.tremble",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 3,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.pyre",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.bludgeon",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.taunt",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.bludgeon"
+    ],
+    "acceptable": [
+      "sts2.taunt"
+    ],
+    "tags": [
+      "energy-curve"
+    ],
+    "rationale": "Low-curve deck full of 0/1-cost cards: surplus energy has nothing to spend on, so Pyre is worth little (R9 counterexample; 0-cost cards are good only with an energy sink, Baalorlord 2-cost article P4; Pyre 'quite slow'). Bludgeon is a sink that the curve can pay for and 'expensive cards are worth more per draw' (P4). Taunt (block + Vulnerable for Bully) is acceptable."
+  },
+  {
+    "id": "H24",
+    "act": 1,
+    "ascension": 3,
+    "floor": 6,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.anger",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.unrelenting",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.blood_wall",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.anger"
+    ],
+    "acceptable": [],
+    "tags": [
+      "energy-curve",
+      "frontload"
+    ],
+    "rationale": "Bash 2 + Bludgeon 3 + Uppercut 2 already strain 3 energy; Unrelenting and Blood Wall add more 2-cost demand (R9). Anger is 0-cost frontload and a strong Act 1 pick (P12: +5% Act 1)."
+  },
+  {
+    "id": "H25",
+    "act": 1,
+    "ascension": 2,
+    "floor": 3,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.anger",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.uppercut",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.pommel_strike",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.stone_armor",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.uppercut",
+      "sts2.pommel_strike"
+    ],
+    "acceptable": [],
+    "tags": [
+      "close-call",
+      "frontload"
+    ],
+    "rationale": "Both Uppercut and Pommel Strike are top tier across experts (§10.2); Uppercut brings Weak/Vulnerable for elites and bosses (P6), Pommel cheap frontload plus cycle (V7). Stone Armor is slower early (R10). Close call by expert consensus."
+  },
+  {
+    "id": "H26",
+    "act": 1,
+    "ascension": 7,
+    "floor": 17,
+    "hp": null,
+    "maxHp": null,
+    "relics": [],
+    "deck": [
+      {
+        "entityId": "sts2.strike_ironclad",
+        "copies": 5,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.defend_ironclad",
+        "copies": 4,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bash",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.ascenders_bane",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.pommel_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.twin_strike",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.uppercut",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.shrug_it_off",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.thunderclap",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.bludgeon",
+        "copies": 1,
+        "upgraded": false
+      },
+      {
+        "entityId": "sts2.taunt",
+        "copies": 1,
+        "upgraded": false
+      }
+    ],
+    "offers": [
+      {
+        "slot": 0,
+        "entityId": "sts2.unmovable",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 1,
+        "entityId": "sts2.demon_form",
+        "confidence": 1,
+        "upgraded": false
+      },
+      {
+        "slot": 2,
+        "entityId": "sts2.juggernaut",
+        "confidence": 1,
+        "upgraded": false
+      }
+    ],
+    "preferred": [
+      "sts2.unmovable"
+    ],
+    "acceptable": [],
+    "tags": [
+      "rare-reward",
+      "boss-reward"
+    ],
+    "rationale": "Act 1 boss reward (all Rare): skipping is almost always wrong (P13; R12 lowers θ). Unmovable 'single-handedly makes most decks able to block almost every attack' (P8, Jorbs; top tier §10.2). Demon Form is disputed and low for most (Baalorlord D, vmService C, §2.3/§10.2); Juggernaut lacks block-event support and is mostly rated low (§10.2)."
+  }
+]

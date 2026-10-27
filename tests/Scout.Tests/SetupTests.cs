@@ -39,4 +39,21 @@ public sealed class SetupTests
         Assert.Equal(577, pack.Entities.Length);
         Assert.Contains(CatalogValidation.Pool(pack, "ironclad"), e => e.Name == "Stampede");
     }
+
+    [Fact]
+    public void OldSettingsJsonStillLoads()
+    {
+        var path = Path.Combine(AppContext.BaseDirectory, "Fixtures", "settings-before-hp.json");
+        var settings = System.Text.Json.JsonSerializer.Deserialize<Scout.Windows.Settings>(File.ReadAllText(path), Json.Options)!;
+        settings.Validate();
+        Assert.Equal((null, null, null), (settings.Context.Hp, settings.Context.MaxHp, settings.Context.Floor));
+        Assert.Equal(new[] { "bag_of_marbles" }, settings.Context.Relics);
+        Assert.Equal(2, settings.Context.Act);
+        var updated = settings with { Context = settings.Context with { Hp = 40, MaxHp = 80, Floor = 20 } };
+        updated.Validate();
+        var reloaded = System.Text.Json.JsonSerializer.Deserialize<Scout.Windows.Settings>(Json.Write(updated), Json.Options)!.Context;
+        Assert.Equal((40, 80, 20), (reloaded.Hp, reloaded.MaxHp, reloaded.Floor));
+        var ex = Assert.Throws<InvalidDataException>(() => (settings with { Context = settings.Context with { Hp = 90, MaxHp = 80 } }).Validate());
+        Assert.Equal("HP must be between 1 and max HP", ex.Message);
+    }
 }

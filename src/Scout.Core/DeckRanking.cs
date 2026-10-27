@@ -21,9 +21,18 @@ public static class DeckRanking
             return "Card name uncertain — confirm all three offers before recommendation";
         return null;
     }
+    /// <summary>Display name for a recommendation; Skip has no entity and must never reach an entity lookup.</summary>
+    public static string DisplayName(StrategyPack pack, Recommendation r) => r.EntityId == RewardChoices.Skip ? "Skip (take no card)" : pack.Entities.Single(e => e.Id == r.EntityId).Name;
+    // Role data must load and match this pack's patch; otherwise Ironclad falls back to the legacy heuristic (fail closed for v2).
+    private static CardRoleSet? IroncladRoles(StrategyPack pack)
+    {
+        try { var roles = CardRoles.Load(); CardRoles.Validate(roles, pack); return roles; }
+        catch (Exception ex) when (ex is InvalidDataException or System.Text.Json.JsonException) { return null; }
+    }
     public static Recommendation[] Rank(StrategyPack pack, Observation observation, RunContext context)
     {
         if (BlockReason(pack, observation, context) != null) return [];
+        if (context.Character == "ironclad" && IroncladRoles(pack) is { } roles) return RewardScoring.Rank(pack, roles, observation, context);
         var owned = Deck.Entries(context).SelectMany(entry => Enumerable.Repeat((Entity: pack.Entities.Single(e => e.Id == entry.EntityId), entry.Upgraded), entry.Copies)).ToArray();
         string[] Tags((Entity Entity, bool Upgraded) c) => c.Upgraded ? c.Entity.Card!.UpgradedTags : c.Entity.Tags;
         int Count(string tag) => owned.Count(c => Tags(c).Contains(tag));

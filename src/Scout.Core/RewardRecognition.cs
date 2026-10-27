@@ -54,14 +54,14 @@ public sealed class RewardRecognizer : IScreenRecognizer
     private readonly INameOcr ocr;
     private readonly Region[] regions;
     private readonly Entity[] pool;
-    public RewardRecognizer(Calibration calibration, StrategyPack pack, string character, INameOcr ocr)
+    public RewardRecognizer(Calibration calibration, StrategyPack pack, string character, INameOcr ocr, IEnumerable<string>? relics = null)
     {
         this.ocr = ocr;
         // Ignore legacy reward entity templates, preserving all merchant and screen probes.
         screens = new(calibration with { Probes = calibration.Probes.Where(p => p.Screen != Screen.CardReward || p.Kind == "screen").ToArray() }, pack);
         regions = calibration.RewardNameRegions ?? [];
         if (regions.Length != 3 || regions.Any(r => !r.Valid) || regions.Distinct().Count() != 3) throw new InvalidDataException("Configure exactly three distinct rewardNameRegions in calibration");
-        pool = CatalogValidation.Pool(pack, character);
+        pool = CatalogValidation.RewardPool(pack, character, relics ?? []);
     }
     public Observation Recognize(GrayFrame frame, DateTimeOffset at) => Replay(frame, at).Observation;
     public RewardReplay Replay(GrayFrame frame, DateTimeOffset at)

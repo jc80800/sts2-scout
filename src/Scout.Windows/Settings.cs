@@ -19,5 +19,6 @@ public sealed record Settings
     public void Validate()
     {
         if (string.IsNullOrWhiteSpace(ProcessName) || ProcessName.IndexOfAny(['/', '\\', '.']) >= 0 || !double.IsFinite(OffsetX + OffsetY + Opacity) || Opacity is < .2 or > 1 || PollMilliseconds is < 500 or > 10000 || HotkeyModifiers > 15 || HotkeyVirtualKey is < 1 or > 254 || Context.Act is < 1 or > 4 || Context.Ascension is < 0 or > 30 || Context.Gold < 0 || Context.ReserveGold < 0) throw new InvalidDataException("Invalid settings; see docs/windows-guide.md");
+        Deck.ValidateRun(Context);
     }
 }

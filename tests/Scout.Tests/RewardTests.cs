@@ -69,12 +69,18 @@ public sealed class RewardTests
     [Fact]
     public void DeckFeaturesChangeRankingWithConcreteReasons()
     {
-        var ranked = new RecommendationEngine(Pack).Rank(Reward, Context);
-        Assert.Equal("sts2.vicious", ranked[0].EntityId);
-        Assert.Contains(ranked[0].Reasons, r => r.Contains("3 Vulnerable sources"));
+        var engine = new RecommendationEngine(Pack);
+        var ranked = engine.Rank(Reward, Context);
+        var vicious = ranked.Single(r => r.EntityId == "sts2.vicious");
+        Assert.Contains(vicious.Reasons, r => r.Contains("Vulnerable sources in deck: 2.4 (Bash ×3)") && r.Contains("~80%"));
         var unsupported = Context with { Cards = [new("sts2.defend_ironclad", 10, false)] };
-        Assert.NotEqual("sts2.vicious", new RecommendationEngine(Pack).Rank(Reward, unsupported)[0].EntityId);
-        Assert.Contains(ranked.Single(r => r.EntityId == "sts2.pommel_strike").Reasons, r => r.Contains("2 copies"));
+        var without = engine.Rank(Reward, unsupported);
+        Assert.NotEqual("sts2.vicious", without[0].EntityId);
+        Assert.Contains(without.Single(r => r.EntityId == "sts2.vicious").Reasons, r => r.Contains("Vulnerable sources in deck: 0") && r.Contains("~0%"));
+        // Vulnerable support is a deck feature: without it Vicious falls further behind the best offer.
+        double Gap(Recommendation[] r) => r[0].Score - r.Single(x => x.EntityId == "sts2.vicious").Score;
+        Assert.True(Gap(ranked) < Gap(without), $"{Gap(ranked)} vs {Gap(without)}");
+        Assert.Contains(ranked.Single(r => r.EntityId == "sts2.pommel_strike").Reasons, r => r.StartsWith("Tradeoff: deck 10 → 11 cards", StringComparison.Ordinal));
     }
     [Fact]
     public void RankingsAreDeterministicAndUpgradesMatter()
@@ -84,9 +90,13 @@ public sealed class RewardTests
         var old = System.Globalization.CultureInfo.CurrentCulture;
         try { System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("fr-FR"); Assert.Equal(expected, Json.Write(engine.Rank(Reward, Context))); }
         finally { System.Globalization.CultureInfo.CurrentCulture = old; }
-        Assert.Contains(engine.Rank(Reward, Context)[0].Reasons, r => r.Contains("copy is upgraded"));
+        var ranked = engine.Rank(Reward, Context);
+        Assert.All(ranked.Where(r => r.EntityId != RewardChoices.Skip), r => Assert.Contains(r.Reasons, reason => reason.StartsWith("This offered copy is upgraded: worth", StringComparison.Ordinal)));
         var baseCards = Reward with { Choices = Reward.Choices.Select(c => c with { Upgraded = false }).ToArray() };
-        Assert.NotEqual(expected, Json.Write(engine.Rank(baseCards, Context)));
+        var based = engine.Rank(baseCards, Context);
+        Assert.NotEqual(expected, Json.Write(based));
+        // Pommel Strike+ draws 2 instead of 1: its upgrade is worth more than a flat bonus.
+        Assert.True(ranked.Single(r => r.EntityId == "sts2.pommel_strike").Score > based.Single(r => r.EntityId == "sts2.pommel_strike").Score);
     }
     [Fact]
     public void AnyUnknownMissingSlotDeckOrVersionWithholdsAllRecommendations()
