@@ -48,7 +48,9 @@ internal static class Program
                 box.SelectedItem = box.Items.Cast<Entity>().Single(e => e.Name == name);
             correction.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => FindButton(correction, "Get advice").RaiseEvent(new RoutedEventArgs(Button.ClickEvent))));
             Require(correction.ShowDialog() == true && correction.Corrected!.Choices.All(c => c.EntityId != null), "Manual reward entry failed");
-            Require(DeckRanking.Rank(pack, correction.Corrected!, context).Length == 3, "Manual advice requires OCR unexpectedly");
+            // Ironclad ranks the three offers plus Skip.
+            var advice = DeckRanking.Rank(pack, correction.Corrected!, context);
+            Require(advice.Count(r => r.EntityId != RewardChoices.Skip) == 3 && advice.Any(r => r.EntityId == RewardChoices.Skip), "Manual advice requires OCR unexpectedly");
 
             var frame = new GrayFrame(1920, 1080, Enumerable.Range(0, 1920 * 1080).Select(i => (byte)((i / 1920 / 32 + i % 1920 / 32) % 2 == 0 ? 50 : 110)).ToArray());
             var calibration = new CalibrationEditor(frame, "0.107.1"); Render(calibration, output, "scan-setup"); calibration.Close();
